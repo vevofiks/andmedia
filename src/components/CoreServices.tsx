@@ -63,6 +63,11 @@ export default function CoreServices() {
     return () => ctx.revert();
   }, []);
 
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent("open-consult-modal"));
+  };
+
   return (
     <section ref={sectionRef} id="core-services" className="relative section-padding bg-[#0A0D14] py-24 overflow-hidden select-none text-white border-b border-white/[0.04]">
       
@@ -124,7 +129,11 @@ export default function CoreServices() {
               </p>
 
               {/* Interaction Link */}
-              <a href="#cta" className={`inline-flex items-center gap-2 text-[13px] font-bold ${service.accentHoverText} transition-all duration-300`}>
+              <a 
+                href="#cta" 
+                onClick={handleContactClick}
+                className={`inline-flex items-center gap-2 text-[13px] font-bold ${service.accentHoverText} transition-all duration-300`}
+              >
                 {service.link}
                 <svg className="w-4 h-4 translate-y-[0.5px] group-hover:translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

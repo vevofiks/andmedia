@@ -35,6 +35,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent("open-consult-modal"));
+  };
+
   return (
     <div
       className={`fixed left-0 right-0 z-[9999] flex justify-center pointer-events-none transition-all duration-500 ease-in-out top-0 ${
@@ -88,10 +93,11 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Action Button */}
+          {/* Action Button (Redirects to Custom WhatsApp/Email modal Router) */}
           <div className="hidden lg:block">
             <a
               href="#cta"
+              onClick={handleContactClick}
               className={`inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-brand-teal text-white text-[13px] font-extrabold tracking-wider uppercase rounded-full hover:bg-brand-cyan transition-all duration-300 hover:shadow-[0_8px_25px_rgba(18,181,176,0.3)] hover:-translate-y-0.5 font-sans`}
             >
               Let&apos;s Talk ↗
@@ -131,7 +137,10 @@ export default function Navbar() {
             ))}
             <a
               href="#cta"
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => {
+                setMobileOpen(false);
+                handleContactClick(e);
+              }}
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-teal text-white text-[13px] font-extrabold tracking-wider uppercase rounded-full mt-2 font-sans"
             >
               Let&apos;s Talk ↗

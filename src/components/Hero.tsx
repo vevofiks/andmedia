@@ -87,6 +87,11 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent("open-consult-modal"));
+  };
+
   return (
     <section 
       ref={containerRef} 
@@ -136,13 +141,14 @@ export default function Hero() {
             {/* Refined clean actions */}
             <div ref={ctaRef} className="flex flex-wrap gap-4 opacity-0">
               <a
-                href="#services"
+                href="#digital-tech"
                 className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#12B5B0] text-white text-[13px] font-bold tracking-widest uppercase rounded-full hover:bg-[#1CA7C6] transition-all duration-300 shadow-sm"
               >
                 Our Services
               </a>
               <a
                 href="#cta"
+                onClick={handleContactClick}
                 className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/10 text-white text-[13px] font-bold tracking-widest uppercase rounded-full hover:border-[#12B5B0]/30 hover:bg-white/[0.02] transition-all duration-400"
               >
                 Request Details

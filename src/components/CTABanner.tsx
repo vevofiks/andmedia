@@ -90,6 +90,11 @@ export default function CTABanner() {
     return () => ctx.revert();
   }, []);
 
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.dispatchEvent(new CustomEvent("open-consult-modal"));
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -171,7 +176,8 @@ export default function CTABanner() {
             {/* Glowing buttons row */}
             <div className="flex flex-wrap gap-4 mt-4">
               <a
-                href="mailto:communicate@andmedia.me"
+                href="#cta"
+                onClick={handleContactClick}
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-brand-teal text-white text-[15px] font-semibold rounded-full hover:bg-brand-cyan transition-all duration-400 shadow-[0_12px_40px_rgba(18,181,176,0.25)] hover:shadow-[0_12px_40px_rgba(18,181,176,0.45)] hover:-translate-y-0.5"
               >
                 {/* Glow ring */}
@@ -183,8 +189,9 @@ export default function CTABanner() {
                 </svg>
               </a>
               <a
-                href="mailto:communicate@andmedia.me"
-                className="group inline-flex items-center gap-2.5 px-8 py-4 border-2 border-white/10 text-white text-[15px] font-semibold rounded-full hover:border-brand-yellow/30 hover:bg-white/5 transition-all duration-400"
+                href="#cta"
+                onClick={handleContactClick}
+                className="group inline-flex items-center gap-2.5 px-8 py-4 border-2 border-white/10 text-white text-[15px] font-semibold rounded-full hover:border-brand-yellow/30 hover:bg-white/5 transition-all duration-400 cursor-pointer"
               >
                 Request Our Portfolio
               </a>
