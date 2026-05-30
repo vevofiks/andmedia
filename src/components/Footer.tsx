@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 const footerLinks = {
-  Services: ["OOH & DOOH", "In-Flight Advertising", "Taxi Advertising", "Print Media", "Brand Strategy"],
+  Services: ["MediaScape", "CodeCraft Solutions", "AI Chatbots & Agents", "Tech Insight Suite", "Data Vision Wing"],
   Company: ["About Us", "Our Approach", "Case Studies", "Careers", "Contact"],
   Resources: ["Blog", "Media Kit", "Brand Guidelines", "Privacy Policy", "Terms of Service"],
 };

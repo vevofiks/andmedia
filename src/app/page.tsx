@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ServicesGrid from "@/components/ServicesGrid";
 import CoreServices from "@/components/CoreServices";
+import TechServices from "@/components/TechServices";
 import TrustStrip from "@/components/TrustStrip";
 import ProcessSection from "@/components/ProcessSection";
 import GlobalReach from "@/components/GlobalReach";
@@ -15,8 +15,8 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <ServicesGrid />
         <CoreServices />
+        <TechServices />
         <TrustStrip />
         <ProcessSection />
         <GlobalReach />

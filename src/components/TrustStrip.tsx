@@ -20,43 +20,58 @@ const brands = [
 
 export default function TrustStrip() {
   const sectionRef = useRef<HTMLElement>(null);
-  const stripRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(sectionRef.current, { opacity: 0 }, {
-        opacity: 1, duration: 1, ease: "power2.out",
-        scrollTrigger: { trigger: sectionRef.current, start: "top 90%", toggleActions: "play none none reverse" },
+      gsap.fromTo(sectionRef.current, { opacity: 0, y: 30 }, {
+        opacity: 1, y: 0, duration: 1.2, ease: "power3.out",
+        scrollTrigger: { trigger: sectionRef.current, start: "top 92%", toggleActions: "play none none reverse" },
       });
     }, sectionRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 bg-white border-y border-gray-100 opacity-0">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <p className="text-center text-[12px] font-bold text-brand-dark/30 tracking-[0.25em] uppercase mb-10">
-          Trusted by Global Brands
+    <section ref={sectionRef} className="py-16 bg-white border-y border-brand-dark/5 opacity-0 relative select-none overflow-hidden">
+      
+      {/* Decorative subtle hairline line tracks */}
+      <div className="absolute top-0 bottom-0 left-[10%] w-[1px] bg-brand-dark/5 pointer-events-none" />
+      <div className="absolute top-0 bottom-0 right-[10%] w-[1px] bg-brand-dark/5 pointer-events-none" />
+
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
+        
+        {/* Editorial tracked title */}
+        <p className="text-center text-[10.5px] font-extrabold text-[#12B5B0] tracking-[0.35em] uppercase mb-10">
+          [ TRUSTED BY GLOBAL CORRIDORS ]
         </p>
-        <div className="relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
-          <div ref={stripRef} className="flex animate-marquee items-center">
+
+        {/* Marquee Loop */}
+        <div className="relative overflow-hidden py-2">
+          {/* Blurred overlays for elegant fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+          
+          <div className="flex animate-marquee items-center flex-nowrap w-max">
             {[...brands, ...brands, ...brands, ...brands].map((brand, i) => (
-              <div key={i} className="flex-shrink-0 px-10 md:px-14 flex items-center justify-center h-24 group cursor-pointer">
-                <div className="relative h-12 w-32 md:w-40 opacity-40 group-hover:opacity-100 transition-all duration-500 hover:scale-105 transform">
+              <div 
+                key={i} 
+                className="flex-shrink-0 px-8 md:px-12 flex items-center justify-center h-16 group cursor-pointer"
+              >
+                {/* Clean, borderless floating image structure */}
+                <div className="relative w-[130px] md:w-[160px] h-[48px] opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 transform">
                   <Image
                     src={brand.src}
                     alt={brand.name}
                     fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 128px, 160px"
+                    className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                    sizes="(max-width: 768px) 96px, 160px"
                   />
                 </div>
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );
