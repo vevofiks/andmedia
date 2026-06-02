@@ -1,16 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
-type Message = {
-  sender: "user" | "bot";
-  text: string;
-};
 
 export default function ServicesGrid() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,14 +18,6 @@ export default function ServicesGrid() {
   const textRefs = useRef<HTMLDivElement[]>([]);
   const visualRefs = useRef<HTMLDivElement[]>([]);
 
-  // Telemetry indicators
-  const biBarsRef = useRef<HTMLDivElement[]>([]);
-
-  // Chat console states
-  const [messages, setMessages] = useState<Message[]>([
-    { sender: "bot", text: "Enterprise AI Agent standing by. Select a routine query chip below to simulate a live automated campaign audit." }
-  ]);
-  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -78,38 +65,12 @@ export default function ServicesGrid() {
         );
       });
 
-      // 3. Pulse Forecast bars in Tech Insight
-      biBarsRef.current.forEach((bar, i) => {
-        if (!bar) return;
-        gsap.fromTo(bar,
-          { scaleY: 0.35 },
-          {
-            scaleY: 1.05,
-            duration: 1.2 + i * 0.3,
-            repeat: -1,
-            yoyo: true,
-            ease: "power1.inOut"
-          }
-        );
-      });
 
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-  // AI response simulator
-  const handleBotQuery = (queryText: string, botResponse: string) => {
-    if (isTyping) return;
-
-    setMessages((prev) => [...prev, { sender: "user", text: queryText }]);
-    setIsTyping(true);
-
-    setTimeout(() => {
-      setIsTyping(false);
-      setMessages((prev) => [...prev, { sender: "bot", text: botResponse }]);
-    }, 1200);
-  };
 
   return (
     <div ref={containerRef} id="services" className="relative w-full bg-brand-soft text-brand-dark py-24 select-none overflow-hidden border-t border-brand-dark/5">
@@ -174,35 +135,21 @@ export default function ServicesGrid() {
           {/* Right cockpit visual */}
           <div
             ref={(el) => { if (el) visualRefs.current[0] = el; }}
-            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.03)] border border-brand-dark/10 hover:border-[#12B5B0]/30 transition-all duration-500 group opacity-0 p-8 bg-white flex flex-col justify-between"
+            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.08)] border border-brand-dark/10 hover:border-[#12B5B0]/40 transition-all duration-500 group opacity-0"
           >
-            <div className="flex items-center justify-between border-b border-brand-dark/10 pb-4">
-              <span className="text-[10px] font-mono text-[#12B5B0] uppercase tracking-widest font-extrabold">MediaScape Diagnostic Monitor</span>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[9px] font-mono text-brand-dark/40">LIVE SYSTEM</span>
-              </div>
+            <Image
+              src="/images/mediascape-dashboard.png"
+              alt="MediaScape digital marketing analytics dashboard"
+              fill
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/30 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-5 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span className="text-[9px] font-mono text-white font-bold uppercase tracking-widest">Live Campaign Data</span>
             </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-auto py-6">
-              <div className="bg-brand-soft border border-brand-dark/5 rounded-2xl p-4 flex flex-col justify-between">
-                <span className="text-[9px] text-brand-dark/45 uppercase font-mono">AD Impressions</span>
-                <span className="text-2xl font-black text-[#12B5B0] tracking-tighter">8.4M+</span>
-              </div>
-              <div className="bg-brand-soft border border-brand-dark/5 rounded-2xl p-4 flex flex-col justify-between">
-                <span className="text-[9px] text-brand-dark/45 uppercase font-mono">CONVERSION LIFT</span>
-                <span className="text-2xl font-black text-[#1CA7C6] tracking-tighter">+28.6%</span>
-              </div>
-              <div className="bg-brand-soft border border-brand-dark/5 rounded-2xl p-4 col-span-2 sm:col-span-1 flex flex-col justify-between">
-                <span className="text-[9px] text-brand-dark/45 uppercase font-mono">Ad optimization</span>
-                <span className="text-xl font-bold text-brand-dark tracking-tight">ACTIVE</span>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center text-[10px] text-brand-dark/40 border-t border-brand-dark/10 pt-4">
-              <span>Dynamic data-driven targeting synchronization</span>
-              <span className="font-mono text-[#12B5B0] font-bold">ACCURACY: 99.8%</span>
-            </div>
+            <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-[#12B5B0]/90 text-white text-[9px] font-bold font-mono">ACCURACY: 99.8%</div>
           </div>
         </div>
 
@@ -216,31 +163,21 @@ export default function ServicesGrid() {
           {/* Right visual (placed first on left column on desktop) */}
           <div
             ref={(el) => { if (el) visualRefs.current[1] = el; }}
-            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.03)] border border-brand-dark/10 hover:border-[#1CA7C6]/30 transition-all duration-500 group order-2 lg:order-1 opacity-0 p-8 bg-white flex flex-col justify-between"
+            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.08)] border border-brand-dark/10 hover:border-[#1CA7C6]/40 transition-all duration-500 group order-2 lg:order-1 opacity-0"
           >
-            <div className="flex items-center justify-between border-b border-brand-dark/10 pb-4">
-              <span className="text-[10px] font-mono text-[#1CA7C6] uppercase tracking-widest font-extrabold">CODECRAFT ARCHITECTURE CONSOLE</span>
-              <span className="text-[8.5px] text-brand-dark/40 font-mono">ENV: PROD DEPLOYMENT</span>
+            <Image
+              src="/images/ooh-billboard.png"
+              alt="OOH billboard advertising and outdoor media"
+              fill
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-5 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#1CA7C6] animate-pulse" />
+              <span className="text-[9px] font-mono text-white font-bold uppercase tracking-widest">Enterprise Deployment Active</span>
             </div>
-
-            {/* IDE remains dark for premium developer code contrast */}
-            <div className="my-auto py-4 font-mono text-[10px] sm:text-[11px] text-[#1CA7C6]/90 flex flex-col gap-2 select-none bg-[#0A0D14] rounded-2xl p-5 border border-brand-dark/5 shadow-inner">
-              <div className="flex items-center gap-1.5 border-b border-white/5 pb-2 mb-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
-                <span className="text-[8px] text-white/30 ml-auto">SoftwareArchitect.tsx</span>
-              </div>
-              <span className="text-white/40">&gt; npm run deploy --prod</span>
-              <span>✓ Compiled successfully | build time: 1.4s</span>
-              <span className="text-brand-yellow">&gt; Core API: 12ms latency threshold verified</span>
-              <span>✓ Cloudflare Edge routing: 100% active</span>
-            </div>
-
-            <div className="flex justify-between items-center text-[10px] text-brand-dark/40 border-t border-brand-dark/10 pt-4">
-              <span>Enterprise Grade custom applications built to scale</span>
-              <span className="font-extrabold text-[#1CA7C6]">STATUS: 200 OK</span>
-            </div>
+            <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-[#1CA7C6]/90 text-white text-[9px] font-bold font-mono">STATUS: 200 OK</div>
           </div>
 
           {/* Left copy */}
@@ -318,79 +255,19 @@ export default function ServicesGrid() {
           {/* Right interactive chat visual */}
           <div
             ref={(el) => { if (el) visualRefs.current[2] = el; }}
-            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.03)] border border-brand-dark/10 hover:border-[#12B5B0]/30 transition-all duration-500 group opacity-0 p-6 bg-white flex flex-col justify-between"
+            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.08)] border border-brand-dark/10 hover:border-[#12B5B0]/40 transition-all duration-500 group opacity-0"
           >
-            <div className="flex items-center justify-between border-b border-brand-dark/10 pb-3">
-              <span className="text-[10px] font-mono text-[#12B5B0] uppercase tracking-widest font-extrabold">AUTOMATED AGENT SIMULATOR</span>
-              <span className="text-[8px] font-mono text-brand-dark/40">LLM CORE: V2.1 ACTIVE</span>
-            </div>
-
-            {/* Chat bubbles container */}
-            <div className="flex-1 flex flex-col gap-2 max-h-[160px] overflow-y-auto pr-1 py-4 scrollbar-none">
-              {messages.map((msg, i) => (
-                <div 
-                  key={i} 
-                  className={`flex flex-col max-w-[85%] rounded-2xl px-3.5 py-2 ${
-                    msg.sender === "user" 
-                      ? "bg-[#1CA7C6]/15 border border-[#1CA7C6]/20 text-brand-dark rounded-br-none self-end ml-12"
-                      : "bg-brand-soft border border-brand-dark/5 text-brand-dark rounded-bl-none self-start mr-12"
-                  }`}
-                >
-                  <span className={`text-[7.5px] font-bold tracking-wider uppercase mb-0.5 font-mono ${
-                    msg.sender === "user" ? "text-[#1CA7C6]" : "text-brand-dark/40"
-                  }`}>
-                    {msg.sender === "user" ? "Client Query" : "System Agent"}
-                  </span>
-                  <p className="text-[10px] leading-tight font-light">{msg.text}</p>
-                </div>
-              ))}
-              
-              {isTyping && (
-                <div className="bg-brand-soft border border-brand-dark/5 text-brand-dark rounded-2xl rounded-bl-none px-3.5 py-2.5 self-start mr-12 max-w-[85%]">
-                  <span className="text-[7.5px] font-bold text-brand-dark/40 tracking-wider uppercase mb-1 font-mono">System Agent</span>
-                  <div className="flex items-center gap-1.5 py-0.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#12B5B0] animate-bounce" style={{ animationDelay: "0s", animationDuration: "0.8s" }} />
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#1CA7C6] animate-bounce" style={{ animationDelay: "0.2s", animationDuration: "0.8s" }} />
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2D400] animate-bounce" style={{ animationDelay: "0.4s", animationDuration: "0.8s" }} />
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Chat triggers */}
-            <div className="flex flex-col gap-2 border-t border-brand-dark/10 pt-3">
-              <span className="text-[7.5px] font-bold text-brand-dark/40 uppercase tracking-[0.15em] font-mono leading-none">
-                Select audit routine chip to test Chatbot:
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                <button
-                  onClick={() => handleBotQuery(
-                    "Optimize campaign budget", 
-                    "Analyzing marketing vectors. Recommending shifting 14% print surplus into DOOH channels to lift CTR by +4.8%."
-                  )}
-                  className="px-2.5 py-1.5 rounded-lg border border-[#12B5B0]/20 bg-[#12B5B0]/5 text-[9px] font-bold hover:bg-[#12B5B0] hover:text-white transition-all duration-300 cursor-pointer text-[#12B5B0] leading-none"
-                >
-                  💸 Budget Audit
-                </button>
-                <button
-                  onClick={() => handleBotQuery(
-                    "Check system latency", 
-                    "CodeCraft core deployment scanned successfully. Primary API checked: 12ms server latency, SSL/TLS route secure."
-                  )}
-                  className="px-2.5 py-1.5 rounded-lg border border-[#1CA7C6]/20 bg-[#1CA7C6]/5 text-[9px] font-bold hover:bg-[#1CA7C6] hover:text-white transition-all duration-300 cursor-pointer text-[#1CA7C6] leading-none"
-                >
-                  ⚡ Latency Scan
-                </button>
-                <button
-                  onClick={() => handleBotQuery(
-                    "Verify active threat status", 
-                    "Data Vision firewall analyzed: Zero threat vectors active. All GCC telemetry sensory nodes reported secure."
-                  )}
-                  className="px-2.5 py-1.5 rounded-lg border border-[#F2D400]/20 bg-[#F2D400]/5 text-[9px] font-bold hover:bg-[#F2D400] hover:text-brand-dark transition-all duration-300 cursor-pointer text-[#E5A900] leading-none"
-                >
-                  🛡️ Security Check
-                </button>
-              </div>
+            <Image
+              src="/images/ai-chatbot.png"
+              alt="Enterprise AI conversational agent interface"
+              fill
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/20 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-5 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#12B5B0] animate-pulse" />
+              <span className="text-[9px] font-mono text-white font-bold uppercase tracking-widest">LLM Core: V2.1 Active</span>
             </div>
           </div>
         </div>
@@ -405,38 +282,19 @@ export default function ServicesGrid() {
           {/* Right visual (placed first on desktop) */}
           <div
             ref={(el) => { if (el) visualRefs.current[3] = el; }}
-            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.03)] border border-brand-dark/10 hover:border-[#F2D400]/55 transition-all duration-500 group order-2 lg:order-1 opacity-0 p-8 bg-white flex flex-col justify-between"
+            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.08)] border border-brand-dark/10 hover:border-[#F2D400]/40 transition-all duration-500 group order-2 lg:order-1 opacity-0"
           >
-            <div className="flex items-center justify-between border-b border-brand-dark/10 pb-4">
-              <span className="text-[10px] font-mono text-[#E5A900] uppercase tracking-widest font-extrabold">PREDICTIVE BUSINESS INTELLIGENCE</span>
-              <span className="text-[8.5px] text-brand-dark/40 font-mono">SYS: MACHINE DATA DECK</span>
-            </div>
-
-            {/* Forecast graph remain dark/high-contrast for clear neon projection display */}
-            <div className="flex items-end justify-between gap-6 h-28 px-4 my-auto bg-[#0A0D14] rounded-2xl p-5 border border-brand-dark/5">
-              <div className="flex-1 flex flex-col items-center gap-2">
-                <div className="w-full bg-white/5 rounded-t h-full flex items-end">
-                  <div ref={(el) => { if (el) biBarsRef.current[0] = el; }} className="w-full bg-[#12B5B0] rounded-t h-[65%] shadow-[0_0_10px_#12B5B0]" />
-                </div>
-                <span className="text-[8px] text-white/35 font-mono">Q1 DEPLOY</span>
-              </div>
-              <div className="flex-1 flex flex-col items-center gap-2">
-                <div className="w-full bg-white/5 rounded-t h-full flex items-end">
-                  <div ref={(el) => { if (el) biBarsRef.current[1] = el; }} className="w-full bg-[#1CA7C6] rounded-t h-[80%] shadow-[0_0_10px_#1CA7C6]" />
-                </div>
-                <span className="text-[8px] text-white/35 font-mono">Q2 TARGET</span>
-              </div>
-              <div className="flex-1 flex flex-col items-center gap-2">
-                <div className="w-full bg-white/5 rounded-t h-full flex items-end">
-                  <div ref={(el) => { if (el) biBarsRef.current[2] = el; }} className="w-full bg-[#F2D400] rounded-t h-[95%] shadow-[0_0_10px_#F2D400]" />
-                </div>
-                <span className="text-[8px] text-white/35 font-mono">Q3 PROJ</span>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center text-[10px] text-brand-dark/40 border-t border-brand-dark/10 pt-4">
-              <span>Predictive analytics forecasting regional corporate growth</span>
-              <span className="font-mono text-[#E5A900] font-extrabold">TRENDING +24%</span>
+            <Image
+              src="/images/global-brand-expansion.png"
+              alt="Global brand expansion and business intelligence"
+              fill
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/30 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-5 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#F2D400] animate-pulse" />
+              <span className="text-[9px] font-mono text-white font-bold uppercase tracking-widest">Trending +24% Regional Growth</span>
             </div>
           </div>
 
@@ -515,28 +373,21 @@ export default function ServicesGrid() {
           {/* Right sensory dashboard visual */}
           <div
             ref={(el) => { if (el) visualRefs.current[4] = el; }}
-            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.03)] border border-brand-dark/10 hover:border-[#12B5B0]/30 transition-all duration-500 group opacity-0 p-8 bg-white flex flex-col justify-between"
+            className="lg:col-span-7 relative w-full aspect-[16/10] rounded-3xl overflow-hidden shadow-[0_15px_45px_rgba(0,0,0,0.08)] border border-brand-dark/10 hover:border-[#12B5B0]/40 transition-all duration-500 group opacity-0"
           >
-            <div className="flex items-center justify-between border-b border-brand-dark/10 pb-4">
-              <span className="text-[10px] font-mono text-[#12B5B0] uppercase tracking-widest font-extrabold">Data Vision Security Gateway</span>
-              <span className="text-[9px] text-green-600 font-mono font-bold">FIREWALL ACTIVE</span>
+            <Image
+              src="/images/cross-cultural-marketing.png"
+              alt="Data analytics and cybersecurity visualization"
+              fill
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/30 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-5 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span className="text-[9px] font-mono text-white font-bold uppercase tracking-widest">Shield Status: 100% OK</span>
             </div>
-
-            <div className="grid grid-cols-2 gap-4 my-auto py-6">
-              <div className="bg-brand-soft border border-brand-dark/5 rounded-2xl p-4 flex flex-col justify-between">
-                <span className="text-[8.5px] text-brand-dark/45 font-mono uppercase">Threat Vectors Detected</span>
-                <span className="text-xl font-black text-green-600 font-mono">0 ACTIVE</span>
-              </div>
-              <div className="bg-brand-soft border border-brand-dark/5 rounded-2xl p-4 flex flex-col justify-between">
-                <span className="text-[8.5px] text-brand-dark/45 font-mono uppercase">Sovereignty SSL</span>
-                <span className="text-xl font-black text-[#12B5B0] font-mono">SECURE</span>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center text-[10px] text-brand-dark/40 border-t border-brand-dark/10 pt-4">
-              <span>Interactive visual data mapping with secure encryption</span>
-              <span className="font-mono text-brand-dark/50">SHIELD STATUS: 100% OK</span>
-            </div>
+            <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-green-500/90 text-white text-[9px] font-bold font-mono">FIREWALL ACTIVE</div>
           </div>
         </div>
 

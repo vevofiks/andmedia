@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -215,24 +216,29 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Geopolitical Targeting Map Area */}
-              <div className="bg-[#0D111A] border border-white/5 rounded-2xl p-5 mb-6 flex flex-col gap-3">
-                <div className="flex justify-between items-center text-[8.5px] font-mono text-white/30 border-b border-white/5 pb-2">
-                  <span>DEPLOYED AUDIENCE VECTORS</span>
-                  <span className="text-[#12B5B0]">ACTIVE ROUTING</span>
+              {/* Global Reach Visual — Dubai OOH Campaign in action */}
+              <div className="rounded-2xl overflow-hidden mb-6 relative">
+                <div className="flex justify-between items-center text-[8.5px] font-mono text-white/30 border-b border-white/5 px-4 py-2.5 bg-[#0D111A]">
+                  <span>LIVE CAMPAIGN FEED — DUBAI, UAE</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#12B5B0] animate-ping" />
+                    <span className="text-[#12B5B0]">ACTIVE</span>
+                  </div>
                 </div>
-                {/* SVG vector route grid */}
-                <div className="h-20 w-full relative flex items-center justify-center">
-                  <svg className="w-full h-full" viewBox="0 0 200 60" fill="none">
-                    <circle cx="20" cy="30" r="3" fill="#12B5B0" />
-                    <circle cx="100" cy="15" r="3" fill="#1CA7C6" />
-                    <circle cx="180" cy="45" r="3" fill="#F2D400" />
-                    <path d="M20 30 Q100 15 100 15 Q180 45 180 45" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" strokeDasharray="4 4" />
-                    <path d="M20 30 Q100 15 100 15 Q180 45 180 45" stroke="#12B5B0" strokeWidth="1" strokeLinecap="round" className="animate-pulse" />
-                  </svg>
-                  <span className="absolute left-[8%] top-[25%] text-[8px] font-mono text-white/30">DXB</span>
-                  <span className="absolute left-[47%] top-[45%] text-[8px] font-mono text-white/30">LHR</span>
-                  <span className="absolute right-[8%] top-[25%] text-[8px] font-mono text-white/30">RUH</span>
+                {/* Realistic Dubai OOH cityscape photo */}
+                <div className="relative w-full h-44 overflow-hidden group">
+                  <Image
+                    src="/images/dubai-ooh-cityscape.png"
+                    alt="Dubai Sheikh Zayed Road at night with OOH digital billboards"
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 580px"
+                  />
+                  {/* Bottom fade to merge with card */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#090C15]/70 via-transparent to-transparent" />
+                  {/* HUD labels */}
+                  <span className="absolute left-3 bottom-3 text-[8px] font-mono text-[#F2D400] font-bold drop-shadow-lg">OOH SCREENS: 1,200+ ACTIVE</span>
+                  <span className="absolute right-3 bottom-3 text-[8px] font-mono text-[#12B5B0] font-bold drop-shadow-lg">DXB NEXUS</span>
                 </div>
               </div>
 

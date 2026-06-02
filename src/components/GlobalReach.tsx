@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -21,20 +22,17 @@ const dashboardCards = [
 ];
 
 const connectionPoints = [
-  { name: "DXB (Dubai Nexus)", x: 620, y: 220, lat: "25.2048° N", lon: "55.2708° E", primary: true },
-  { name: "LHR (London Hub)", x: 470, y: 140, lat: "51.5074° N", lon: "0.1278° W" },
-  { name: "JFK (New York Hub)", x: 260, y: 160, lat: "40.7128° N", lon: "74.0060° W" },
-  { name: "SIN (Singapore Hub)", x: 740, y: 290, lat: "1.3521° N", lon: "103.8198° E" },
-  { name: "HND (Tokyo Hub)", x: 810, y: 160, lat: "35.6762° N", lon: "139.6503° E" },
-  { name: "SYD (Sydney Corridor)", x: 840, y: 390, lat: "33.8688° S", lon: "151.2093° E" }
+  { name: "DXB (Dubai Nexus)", x: 580, y: 270, lat: "25.2048° N", lon: "55.2708° E", primary: true },
+  { name: "LHR (London Hub)",  x: 440, y: 160, lat: "51.5074° N", lon: "0.1278° W" },
+  { name: "JFK (New York Hub)", x: 210, y: 190, lat: "40.7128° N", lon: "74.0060° W" },
+  { name: "SIN (Singapore Hub)", x: 760, y: 340, lat: "1.3521° N",  lon: "103.8198° E" },
+  { name: "HND (Tokyo Hub)",    x: 840, y: 210, lat: "35.6762° N", lon: "139.6503° E" },
+  { name: "SYD (Sydney Corridor)", x: 870, y: 430, lat: "33.8688° S", lon: "151.2093° E" }
 ];
 
 export default function GlobalReach() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const mapSvgRef = useRef<SVGSVGElement>(null);
-  const routePathsRef = useRef<SVGPathElement[]>([]);
-  const dotsRef = useRef<SVGCircleElement[]>([]);
   const statsRef = useRef<HTMLDivElement[]>([]);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
@@ -44,36 +42,6 @@ export default function GlobalReach() {
       gsap.fromTo(titleRef.current, { y: 50, opacity: 0 }, {
         y: 0, opacity: 1, duration: 1, ease: "power3.out",
         scrollTrigger: { trigger: titleRef.current, start: "top 85%" }
-      });
-
-      // 2. Map Building Animation on Scroll
-      const mapTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: mapSvgRef.current,
-          start: "top 75%",
-          end: "bottom 30%",
-          scrub: 1.2,
-        }
-      });
-
-      // Draw route lines
-      routePathsRef.current.forEach((path) => {
-        if (!path) return;
-        mapTl.fromTo(path,
-          { strokeDashoffset: 1000 },
-          { strokeDashoffset: 0, duration: 3, ease: "power2.inOut" },
-          0
-        );
-      });
-
-      // Scale in pulsing dots
-      dotsRef.current.forEach((dot) => {
-        if (!dot) return;
-        mapTl.fromTo(dot,
-          { scale: 0, opacity: 0 },
-          { scale: 1.2, opacity: 1, duration: 2, ease: "back.out(2)" },
-          1.5
-        );
       });
 
       // 3. Stats Tickers & Stagger Fades
@@ -163,107 +131,23 @@ export default function GlobalReach() {
             </div>
 
             {/* Map Frame */}
-            <div className="relative w-full aspect-[2/1] min-h-[300px]">
-              
-              {/* SVG Map Lines & Connections */}
-              <svg ref={mapSvgRef} viewBox="0 0 1000 500" className="w-full h-full pointer-events-none" fill="none">
-                <defs>
-                  <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#12B5B0" stopOpacity="0.8" />
-                    <stop offset="50%" stopColor="#1CA7C6" stopOpacity="0.9" />
-                    <stop offset="100%" stopColor="#F2D400" stopOpacity="0.8" />
-                  </linearGradient>
-                  
-                  <linearGradient id="meridianGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#12B5B0" stopOpacity="0.1" />
-                    <stop offset="100%" stopColor="transparent" />
-                  </linearGradient>
+            <div className="relative w-full aspect-[2/1] min-h-[300px] rounded-2xl overflow-hidden">
 
-                  <filter id="hudGlow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="5" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
-                </defs>
+              {/* Realistic Earth at night satellite photograph */}
+              <Image
+                src="/images/earth-night-satellite.png"
+                alt="Earth at night from space showing global city lights across Europe, Middle East, Asia"
+                fill
+                className="object-cover object-center scale-110"
+                sizes="(max-width: 1024px) 100vw, 66vw"
+                priority
+              />
 
-                {/* Cyber style compass rings */}
-                <circle cx="620" cy="220" r="140" stroke="rgba(18,181,176,0.06)" strokeWidth="1" />
-                <circle cx="620" cy="220" r="80" stroke="rgba(18,181,176,0.04)" strokeWidth="1" strokeDasharray="3 3" />
-                
-                {/* Horizontal grid lines */}
-                <line x1="50" y1="250" x2="950" y2="250" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-                <line x1="50" y1="125" x2="950" y2="125" stroke="rgba(255,255,255,0.03)" strokeWidth="1" strokeDasharray="2 2" />
-                <line x1="50" y1="375" x2="950" y2="375" stroke="rgba(255,255,255,0.03)" strokeWidth="1" strokeDasharray="2 2" />
+              {/* Edge vignettes to blend with dark panel */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D111A]/60 via-transparent to-[#0D111A]/30 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-l from-[#0D111A]/40 via-transparent to-[#0D111A]/40 pointer-events-none" />
 
-                {/* Dubai Vertical Meridian projection */}
-                <path d="M 620 50 L 620 450" stroke="url(#meridianGrad)" strokeWidth="1" />
-
-                {/* Connection lines from DXB (Nexus) to global endpoints */}
-                
-                {/* DXB -> LHR (London) */}
-                <path
-                  ref={(el) => { if (el) routePathsRef.current[0] = el; }}
-                  d="M 620 220 Q 545 160 470 140"
-                  stroke="url(#routeGradient)"
-                  strokeWidth="2"
-                  strokeDasharray="1000"
-                  strokeDashoffset="1000"
-                  filter="url(#hudGlow)"
-                />
-
-                {/* DXB -> JFK (New York) */}
-                <path
-                  ref={(el) => { if (el) routePathsRef.current[1] = el; }}
-                  d="M 620 220 Q 420 120 260 160"
-                  stroke="url(#routeGradient)"
-                  strokeWidth="2"
-                  strokeDasharray="1000"
-                  strokeDashoffset="1000"
-                  filter="url(#hudGlow)"
-                />
-
-                {/* DXB -> SIN (Singapore) */}
-                <path
-                  ref={(el) => { if (el) routePathsRef.current[2] = el; }}
-                  d="M 620 220 Q 685 260 740 290"
-                  stroke="url(#routeGradient)"
-                  strokeWidth="2.1"
-                  strokeDasharray="1000"
-                  strokeDashoffset="1000"
-                  filter="url(#hudGlow)"
-                />
-
-                {/* DXB -> HND (Tokyo) */}
-                <path
-                  ref={(el) => { if (el) routePathsRef.current[3] = el; }}
-                  d="M 620 220 Q 720 180 810 160"
-                  stroke="url(#routeGradient)"
-                  strokeWidth="2"
-                  strokeDasharray="1000"
-                  strokeDashoffset="1000"
-                  filter="url(#hudGlow)"
-                />
-
-                {/* DXB -> SYD (Sydney) */}
-                <path
-                  ref={(el) => { if (el) routePathsRef.current[4] = el; }}
-                  d="M 620 220 Q 750 310 840 390"
-                  stroke="url(#routeGradient)"
-                  strokeWidth="2"
-                  strokeDasharray="1000"
-                  strokeDashoffset="1000"
-                  filter="url(#hudGlow)"
-                />
-
-                {/* Dotted HUD map continents hints (Minimalist vector markers) */}
-                {/* North America */}
-                <path d="M 120 100 Q 150 120 200 130 T 280 180 T 320 250" stroke="rgba(255,255,255,0.04)" strokeWidth="1" strokeDasharray="4 4" />
-                {/* Europe/Africa */}
-                <path d="M 450 100 Q 480 160 460 250 T 490 320 T 520 400" stroke="rgba(255,255,255,0.04)" strokeWidth="1" strokeDasharray="4 4" />
-                {/* Asia */}
-                <path d="M 650 120 Q 740 130 800 150 T 850 250 T 780 340" stroke="rgba(255,255,255,0.04)" strokeWidth="1" strokeDasharray="4 4" />
-              </svg>
-
-              {/* Geographic HUD Node Pins */}
+              {/* Geographic HUD Node Pins overlaid on image */}
               {connectionPoints.map((pt, i) => (
                 <div
                   key={i}
@@ -276,7 +160,7 @@ export default function GlobalReach() {
                     {/* Node Core */}
                     <div className={`w-2 h-2 rounded-full bg-brand-${pt.primary ? "yellow" : "teal"} shadow-[0_0_12px_rgba(242,212,0,0.8)]`} />
                   </div>
-                  
+
                   {/* Floating Coordinates Tag */}
                   <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-brand-dark/90 border border-white/10 px-2 py-1 rounded text-[8px] font-mono whitespace-nowrap opacity-20 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <span className="block font-bold text-white leading-none">{pt.name}</span>

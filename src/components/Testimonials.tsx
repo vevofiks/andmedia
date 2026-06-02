@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,6 +14,7 @@ const caseStudies = [
     tagline: "DOOH Taxi Screen Campaigns",
     quote: "AND Media Solutions delivered a 7.2% CTR through their DOOH taxi smart-screen campaigns — far exceeding our previous benchmarks. Their real-time demographic targeting across Dubai was exceptional and delivered verified footfalls.",
     author: "Marketing Director",
+    image: "/images/taxi-ad.png",
     stats: [
       { value: "7.2%", label: "CTR Achieved", benchmark: "1.8% Industry Avg." },
       { value: "2.4M+", label: "Target Impressions", benchmark: "Over 30 Days" },
@@ -30,6 +32,7 @@ const caseStudies = [
     tagline: "In-Flight & Premium OOH Corridor",
     quote: "The brand recall lift from our cross-border aviation campaigns was outstanding. AND Media's absolute alignment with our high-fashion brand values created an unmatched, seamless presence among affluent regional travelers.",
     author: "Head of Brand Strategy",
+    image: "/images/inflight-ad.png",
     stats: [
       { value: "3.2x", label: "Recall Lift Factor", benchmark: "Verified by survey" },
       { value: "84%", label: "Engagement Rate", benchmark: "Flight duration dwell" },
@@ -195,31 +198,22 @@ export default function Testimonials() {
             {/* Inner graphics deck */}
             <div className="flex-1 grid md:grid-cols-2 gap-6 items-center">
               
-              {/* Graphic 1: Taxi screen mockup or Aircraft Screen representation */}
-              <div className="relative w-full aspect-[4/3] rounded-2xl bg-white/5 border border-white/10 p-4 flex flex-col justify-between overflow-hidden shadow-inner">
-                <span className="text-[8px] font-mono text-brand-teal uppercase tracking-widest">Interactive Media Stream</span>
-                
-                {/* Simulated Screen display */}
-                <div className="flex-1 rounded-xl border border-white/5 bg-[#0a1224] my-3 flex flex-col justify-between p-4 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-brand-teal/5 rounded-full blur-xl" />
-                  
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-ping" />
-                    <span className="text-[7px] text-white/50 font-bold uppercase tracking-widest font-sans">Campaign Stream</span>
-                  </div>
-                  
-                  {/* Glowing campaign metrics inside screen */}
-                  <div className="text-center z-10">
-                    <span className="block text-[8px] text-brand-teal font-mono uppercase">Avg. View Time</span>
-                    <span className="block text-2xl font-extrabold text-white font-mono tracking-tight mt-0.5">14.8m</span>
-                  </div>
-
-                  <span className="text-[6px] text-white/25 text-right font-light leading-none">Smart Screen Verified</span>
+              {/* Graphic 1: Real campaign image */}
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-inner group">
+                <Image
+                  src={activeData.image}
+                  alt={`${activeData.client} campaign visual`}
+                  fill
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 350px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-ping" />
+                  <span className="text-[7px] text-white/70 font-bold uppercase tracking-widest font-mono">Campaign Stream</span>
                 </div>
-
-                <div className="flex justify-between items-center text-[8px] text-white/40">
-                  <span>Device ID: TX-4498</span>
-                  <span className="text-brand-yellow font-bold">100% Active</span>
+                <div className="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-brand-dark/70 border border-white/10">
+                  <span className="text-[7px] font-mono text-brand-teal uppercase tracking-widest">Interactive Media Stream</span>
                 </div>
               </div>
 
