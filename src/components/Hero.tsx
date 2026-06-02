@@ -247,20 +247,6 @@ export default function Hero() {
 
         </div>
       </div>
-
-      {/* Minimal Scroll Indicator */}
-      <div 
-        ref={scrollIndicatorRef}
-        className="absolute bottom-6 left-0 right-0 flex justify-center pointer-events-none select-none opacity-0 z-10"
-      >
-        <div className="flex flex-col items-center gap-1.5">
-          <div className="w-5 h-8 rounded-full border border-white/10 flex justify-center p-1.5">
-            <div className="w-1 h-1.5 rounded-full bg-[#12B5B0] animate-bounce" style={{ animationDuration: "1.5s" }} />
-          </div>
-          <span className="text-[8px] font-bold text-white/20 tracking-[0.2em] uppercase font-sans">Explore</span>
-        </div>
-      </div>
-
     </section>
   );
 }

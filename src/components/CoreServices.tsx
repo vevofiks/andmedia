@@ -8,11 +8,41 @@ gsap.registerPlugin(ScrollTrigger);
 
 const coreServices = [
   {
+    iconPath: "M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z",
+    title: "OOH & DOOH\nAdvertising",
+    description: "Make your brand unmissable. We leverage high-impact outdoor and digital out-of-home placements to activate strategic brand amplification across the Middle East.",
+    link: "Learn More",
+    num: "01",
+    accentGrad: "from-[#12B5B0] to-[#F2D400]",
+    accentHoverText: "group-hover:text-[#12B5B0]",
+    iconBg: "bg-[#12B5B0]/10 text-[#12B5B0] group-hover:bg-[#12B5B0] group-hover:text-white group-hover:shadow-[0_10px_25px_rgba(18,181,176,0.4)]",
+  },
+  {
+    iconPath: "M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5",
+    title: "In-Flight\nAdvertising",
+    description: "Attention, at 30,000 feet. Inflight advertising places your message in a focused, captive environment — every placement connects, resonates, and stays top-of-mind.",
+    link: "Learn More",
+    num: "02",
+    accentGrad: "from-[#1CA7C6] to-[#12B5B0]",
+    accentHoverText: "group-hover:text-[#1CA7C6]",
+    iconBg: "bg-[#1CA7C6]/10 text-[#1CA7C6] group-hover:bg-[#1CA7C6] group-hover:text-white group-hover:shadow-[0_10px_25px_rgba(28,167,198,0.4)]",
+  },
+  {
+    iconPath: "M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12",
+    title: "Taxi\nAdvertising",
+    description: "Put your brand in motion. Our taxi branding services place your message on high-traffic routes — ensuring consistent, high-frequency visibility and keeping your brand top of mind on every ride.",
+    link: "Learn More",
+    num: "03",
+    accentGrad: "from-[#F2D400] to-[#E5A900]",
+    accentHoverText: "group-hover:text-[#F2D400]",
+    iconBg: "bg-[#F2D400]/10 text-[#F2D400] group-hover:bg-[#F2D400] group-hover:text-white group-hover:shadow-[0_10px_25px_rgba(242,212,0,0.4)]",
+  },
+  {
     iconPath: "M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5a17.92 17.92 0 01-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418",
     title: "Global Brand\nExpansion Strategy",
     description: "Identify high-impact airports, cities, and travel corridors to expand your brand globally with high prestige.",
     link: "Learn More",
-    num: "01",
+    num: "04",
     accentGrad: "from-[#12B5B0] to-[#1CA7C6]",
     accentHoverText: "group-hover:text-[#12B5B0]",
     iconBg: "bg-[#12B5B0]/10 text-[#12B5B0] group-hover:bg-[#12B5B0] group-hover:text-white group-hover:shadow-[0_10px_25px_rgba(18,181,176,0.4)]",
@@ -22,7 +52,7 @@ const coreServices = [
     title: "Print Media\nStrategy",
     description: "Take your brand into the world's most trusted, high-prestige publications with absolute authority.",
     link: "Learn More",
-    num: "02",
+    num: "05",
     accentGrad: "from-[#1CA7C6] to-[#12B5B0]",
     accentHoverText: "group-hover:text-[#1CA7C6]",
     iconBg: "bg-[#1CA7C6]/10 text-[#1CA7C6] group-hover:bg-[#1CA7C6] group-hover:text-white group-hover:shadow-[0_10px_25px_rgba(28,167,198,0.4)]",
@@ -32,7 +62,7 @@ const coreServices = [
     title: "Cross-Cultural\nBrand Marketing",
     description: "Orchestrate bespoke campaigns that resonate deeply across diverse audiences and drive absolute ROI.",
     link: "Learn More",
-    num: "03",
+    num: "06",
     accentGrad: "from-[#F2D400] to-[#E5A900]",
     accentHoverText: "group-hover:text-[#F2D400]",
     iconBg: "bg-[#F2D400]/10 text-[#F2D400] group-hover:bg-[#F2D400] group-hover:text-white group-hover:shadow-[0_10px_25px_rgba(242,212,0,0.4)]",
@@ -93,7 +123,7 @@ export default function CoreServices() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {coreServices.map((service, index) => (
             <div 
               key={index} 
