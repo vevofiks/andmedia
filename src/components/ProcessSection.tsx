@@ -11,41 +11,41 @@ const steps = [
     number: "01",
     title: "Understand",
     desc: "Deep market research and audience analysis across regions.",
-    stat: "100+ Data Sources",
-    statLabel: "Analyzed Per Campaign",
+    stat: "Data Mining",
+    statLabel: "Comprehensive Source Analysis",
     color: "from-brand-teal to-brand-cyan"
   },
   {
     number: "02",
     title: "Strategize",
     desc: "Craft data-driven media plans with precision targeting.",
-    stat: "98.4% Accuracy",
-    statLabel: "Targeting Precision",
-    color: "from-brand-cyan to-brand-teal"
+    stat: "Target Precision",
+    statLabel: "Optimized Media Planning",
+    color: "from-brand-cyan to-[#12B5B0]"
   },
   {
     number: "03",
     title: "Activate",
     desc: "Deploy campaigns across OOH, in-flight, and digital channels.",
-    stat: "50+ Channels",
-    statLabel: "Simultaneous Reach",
+    stat: "Omnichannel",
+    statLabel: "Simultaneous Placement Reach",
     color: "from-brand-teal to-brand-yellow"
   },
   {
     number: "04",
     title: "Optimize",
     desc: "Real-time performance tracking and media mix optimization.",
-    stat: "24/7 Real-Time",
-    statLabel: "Live Dashboard Feeds",
+    stat: "Real-Time Tracking",
+    statLabel: "Live Feed Audits",
     color: "from-brand-cyan to-brand-yellow"
   },
   {
     number: "05",
     title: "Amplify",
     desc: "Scale winning strategies to new markets and formats.",
-    stat: "3.2x Avg. ROI",
-    statLabel: "Return on Ad Spend",
-    color: "from-brand-yellow to-brand-teal"
+    stat: "Verified ROI",
+    statLabel: "Optimized Return Models",
+    color: "from-brand-yellow to-[#12B5B0]"
   },
 ];
 

@@ -15,7 +15,8 @@ const brands = [
   { name: "Abu Dhabi Tourism", src: "/clients/abu-dhabi-tourism-culture-black.png" },
   { name: "Dubai Tourism", src: "/clients/dubai-tourism-s-300x191.png" },
   { name: "Emirates", src: "/clients/emirats-logo-black-e1751979752318-300x133.png" },
-  { name: "Neom", src: "/clients/neom-logo-e1751979720156-300x123.png" }
+  { name: "Neom", src: "/clients/neom-logo-e1751979720156-300x123.png" },
+  { name: "R&B", src: "/clients/rb.svg" }
 ];
 
 export default function TrustStrip() {
@@ -58,12 +59,12 @@ export default function TrustStrip() {
                 className="flex-shrink-0 px-8 md:px-12 flex items-center justify-center h-16 group cursor-pointer"
               >
                 {/* Clean, borderless floating image structure */}
-                <div className="relative w-[130px] md:w-[160px] h-[48px] opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 transform">
+                <div className="relative w-[130px] md:w-[160px] h-[48px] opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out transform">
                   <Image
                     src={brand.src}
                     alt={brand.name}
                     fill
-                    className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="object-contain filter grayscale contrast-125 group-hover:grayscale-0 group-hover:contrast-100 transition-all duration-500 ease-out"
                     sizes="(max-width: 768px) 96px, 160px"
                   />
                 </div>

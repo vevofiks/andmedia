@@ -7,18 +7,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const stats = [
-  { value: 54, suffix: "+", label: "Countries Activated", desc: "Across 5 continents" },
-  { value: 520, suffix: "+", label: "Global Campaigns", desc: "Delivered with precision" },
-  { value: 2.4, suffix: "B+", label: "Audience Impressions", desc: "Verified reach metrics" },
-  { value: 98.6, suffix: "%", label: "Retention Rate", desc: "Enterprise scale loyalty" },
-];
-
 const dashboardCards = [
-  { title: "Airports Activated", value: "18+ Hubs", details: "DXB, LHR, JFK, SIN, CDG, HND", icon: "✈" },
-  { title: "Airlines Network", value: "15+ Carriers", details: "Emirates, Etihad, Singapore, British", icon: "⌗" },
-  { title: "OOH Locations", value: "1,200+ Screens", details: "Prime digital billboard hubs", icon: "⚿" },
-  { title: "Transit Media", value: "4,500+ Fleets", details: "Interactive smart city taxis", icon: "⛟" }
+  { title: "Airports Activated", value: "OPERATIONAL", details: "DXB, LHR, JFK, SIN, CDG, HND", icon: "✈" },
+  { title: "Airlines Network", value: "EXCLUSIVE", details: "Emirates, Etihad, Singapore, British", icon: "⌗" },
+  { title: "OOH Locations", value: "INFLUENTIAL", details: "Prime digital billboard hubs", icon: "⚿" },
+  { title: "Transit Media", value: "CONNECTED", details: "Interactive smart city taxis & buses", icon: "⛟" }
 ];
 
 const connectionPoints = [
@@ -33,7 +26,6 @@ const connectionPoints = [
 export default function GlobalReach() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement[]>([]);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
@@ -44,36 +36,7 @@ export default function GlobalReach() {
         scrollTrigger: { trigger: titleRef.current, start: "top 85%" }
       });
 
-      // 3. Stats Tickers & Stagger Fades
-      statsRef.current.forEach((stat, i) => {
-        if (!stat) return;
-        const valueEl = stat.querySelector(".counter-value");
-        if (!valueEl) return;
-        const targetValue = parseFloat(valueEl.getAttribute("data-target") || "0");
-
-        gsap.fromTo(stat, { y: 40, opacity: 0 }, {
-          y: 0, opacity: 1, duration: 0.8, delay: i * 0.1, ease: "power3.out",
-          scrollTrigger: {
-            trigger: stat,
-            start: "top 90%",
-            onEnter: () => {
-              gsap.to({ val: 0 }, {
-                val: targetValue,
-                duration: 2.2,
-                ease: "power2.out",
-                onUpdate: function () {
-                  const currentVal = this.targets()[0].val;
-                  valueEl.textContent = targetValue % 1 === 0
-                    ? Math.round(currentVal).toString()
-                    : currentVal.toFixed(1);
-                },
-              });
-            },
-          },
-        });
-      });
-
-      // 4. Staggered reveal for Dashboard Cards
+      // 2. Staggered reveal for Dashboard Cards
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
         gsap.fromTo(card,
@@ -92,7 +55,7 @@ export default function GlobalReach() {
   }, []);
 
   return (
-    <section ref={containerRef} id="global-reach" className="py-24 bg-brand-dark text-white overflow-hidden relative select-none">
+    <section ref={containerRef} id="global-reach" className="py-24 bg-[#090C15] text-white overflow-hidden relative select-none border-b border-white/[0.04]">
       
       {/* HUD Digital Grid Map Texture background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(18,181,176,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(18,181,176,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
@@ -102,10 +65,10 @@ export default function GlobalReach() {
         
         {/* Header Block */}
         <div ref={titleRef} className="text-center mb-20 opacity-0">
-          <span className="inline-block text-[11px] font-extrabold text-brand-teal tracking-[0.3em] uppercase mb-4">
+          <span className="inline-block text-[11px] font-extrabold text-[#12B5B0] tracking-[0.3em] uppercase mb-4">
             GLOBAL OPERATIONS COMMAND
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold tracking-tight leading-none font-sans">
+          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-black tracking-tight leading-none font-sans">
             Our Global Media Reach
           </h2>
           <p className="text-white/45 text-base sm:text-lg font-light leading-relaxed max-w-xl mx-auto mt-4 font-body">
@@ -116,16 +79,16 @@ export default function GlobalReach() {
         {/* ====================================================
             TACTICAL COMMAND CENTER HUD LAYOUT
             ==================================================== */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start mb-16">
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Columns: Interactive Self-Building Map (8 cols) */}
-          <div className="lg:col-span-8 relative rounded-3xl bg-white/5 border border-white/10 p-6 sm:p-8 backdrop-blur-md shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden">
+          <div className="lg:col-span-8 relative rounded-3xl bg-white/[0.02] border border-white/10 p-6 sm:p-8 backdrop-blur-md shadow-[0_30px_100px_rgba(0,0,0,0.5)] overflow-hidden">
             
             {/* HUD Status line */}
             <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-6 text-[10px] font-mono text-white/50 tracking-wider">
               <span>SYS.OPERATIONS: COMMENCE_MAP_BUILD</span>
               <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-brand-teal animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-[#12B5B0] animate-pulse" />
                 ONLINE FEED ACTIVE
               </span>
             </div>
@@ -156,15 +119,15 @@ export default function GlobalReach() {
                 >
                   <div className="relative">
                     {/* Glowing Pulse Ring */}
-                    <span className={`absolute inset-0 w-4 h-4 -left-1 -top-1 rounded-full bg-brand-${pt.primary ? "yellow" : "teal"}/30 animate-ping`} style={{ animationDuration: pt.primary ? "2s" : "3.5s" }} />
+                    <span className={`absolute inset-0 w-4 h-4 -left-1 -top-1 rounded-full bg-${pt.primary ? "yellow" : "teal"}/30 animate-ping`} style={{ animationDuration: pt.primary ? "2s" : "3.5s" }} />
                     {/* Node Core */}
                     <div className={`w-2 h-2 rounded-full bg-brand-${pt.primary ? "yellow" : "teal"} shadow-[0_0_12px_rgba(242,212,0,0.8)]`} />
                   </div>
 
                   {/* Floating Coordinates Tag */}
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-brand-dark/90 border border-white/10 px-2 py-1 rounded text-[8px] font-mono whitespace-nowrap opacity-20 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#090C15]/90 border border-white/10 px-2 py-1 rounded text-[8px] font-mono whitespace-nowrap opacity-20 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     <span className="block font-bold text-white leading-none">{pt.name}</span>
-                    <span className="block text-brand-teal mt-0.5 leading-none">{pt.lat} | {pt.lon}</span>
+                    <span className="block text-[#12B5B0] mt-0.5 leading-none">{pt.lat} | {pt.lon}</span>
                   </div>
                 </div>
               ))}
@@ -178,11 +141,11 @@ export default function GlobalReach() {
               <div
                 key={i}
                 ref={(el) => { if (el) cardsRef.current[i] = el; }}
-                className="group relative rounded-2xl bg-white/5 border border-white/10 p-5 backdrop-blur-md hover:bg-white/10 transition-all duration-300 flex items-center justify-between opacity-0"
+                className="group relative rounded-2xl bg-white/[0.02] border border-white/5 p-5 backdrop-blur-md hover:bg-white/[0.05] transition-all duration-300 flex items-center justify-between opacity-0"
               >
                 <div className="flex flex-col">
                   <span className="text-[11px] font-bold text-white/55 tracking-wider uppercase">{card.title}</span>
-                  <span className="text-2xl font-extrabold text-brand-teal mt-1 font-sans leading-none">{card.value}</span>
+                  <span className="text-2xl font-black text-[#12B5B0] mt-1 font-sans leading-none">{card.value}</span>
                   <span className="text-[10px] text-white/35 font-light mt-1.5 font-body leading-none">{card.details}</span>
                 </div>
                 
@@ -194,26 +157,6 @@ export default function GlobalReach() {
             ))}
           </div>
 
-        </div>
-
-        {/* ====================================================
-            SCROLL-LINKED BIG STATS COUNTER STRIP
-            ==================================================== */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-10 border-t border-white/5">
-          {stats.map((stat, i) => (
-            <div
-              key={i}
-              ref={(el) => { if (el) statsRef.current[i] = el; }}
-              className="text-center flex flex-col gap-1.5 select-none opacity-0"
-            >
-              <div className="flex items-baseline justify-center gap-1 font-sans">
-                <span className="counter-value text-4xl md:text-5xl lg:text-6xl font-extrabold text-white counter-number" data-target={stat.value}>0</span>
-                <span className="text-2xl md:text-3xl font-extrabold text-brand-yellow">{stat.suffix}</span>
-              </div>
-              <span className="text-[13px] font-bold text-white/70 tracking-wider uppercase mt-1">{stat.label}</span>
-              <span className="text-[11px] text-white/35 font-light font-body">{stat.desc}</span>
-            </div>
-          ))}
         </div>
 
       </div>

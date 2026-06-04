@@ -115,7 +115,7 @@ export default function Hero() {
             {/* Minimalist eyebrow */}
             <div ref={eyebrowRef} className="opacity-0">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase font-sans">
-                GLOBAL MEDIA PLANNING & STRATEGY
+                AND Media Solutions LLC • GLOBAL MEDIA PLANNING
               </span>
             </div>
 
@@ -135,14 +135,14 @@ export default function Hero() {
             {/* Executive Description */}
             <div ref={descRef} className="opacity-0">
               <p className="text-base sm:text-lg text-white/50 leading-relaxed font-body font-light max-w-lg">
-                We unite international media planning, high-prestige print publishing, custom software, and conversational AI across regions. Scaled perfectly. Measured absolute.
+                AND Media Solutions LLC delivers international media planning, OOH, DOOH, transit, airport, taxi, and in-flight advertising across borders. Corporate campaigns, scaled perfectly and executed with absolute precision.
               </p>
             </div>
 
             {/* Refined clean actions */}
             <div ref={ctaRef} className="flex flex-wrap gap-4 opacity-0">
               <a
-                href="#digital-tech"
+                href="#core-services"
                 className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-[#12B5B0] text-white text-[13px] font-bold tracking-widest uppercase rounded-full hover:bg-[#1CA7C6] transition-all duration-300 shadow-sm"
               >
                 Our Services
@@ -156,25 +156,25 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Pristine metric counters */}
+            {/* Pristine metric counters (Removed raw numbers/percentages for verified compliance) */}
             <div ref={statsRef} className="grid grid-cols-3 gap-6 border-t border-white/5 pt-8 mt-4 opacity-0 max-w-sm">
               <div>
-                <span className="block text-2xl font-black text-white leading-none tracking-tight">8.4M+</span>
-                <span className="block text-[8.5px] text-white/40 font-bold uppercase tracking-wider mt-1.5 leading-none">Gross Reach</span>
+                <span className="block text-xl font-bold text-white leading-none tracking-tight">GLOBAL</span>
+                <span className="block text-[8.5px] text-white/40 font-bold uppercase tracking-wider mt-1.5 leading-none">Media Reach</span>
               </div>
               <div>
-                <span className="block text-2xl font-black text-[#1CA7C6] leading-none tracking-tight">99.8%</span>
-                <span className="block text-[8.5px] text-white/40 font-bold uppercase tracking-wider mt-1.5 leading-none">Accuracy</span>
+                <span className="block text-xl font-bold text-[#1CA7C6] leading-none tracking-tight">VERIFIED</span>
+                <span className="block text-[8.5px] text-white/40 font-bold uppercase tracking-wider mt-1.5 leading-none">Target Precision</span>
               </div>
               <div>
-                <span className="block text-2xl font-black text-[#F2D400] leading-none tracking-tight">24/7</span>
+                <span className="block text-xl font-bold text-[#F2D400] leading-none tracking-tight">REAL-TIME</span>
                 <span className="block text-[8.5px] text-white/40 font-bold uppercase tracking-wider mt-1.5 leading-none">Campaign Sync</span>
               </div>
             </div>
 
           </div>
 
-          {/* RIGHT COLUMN: Prestige Asymmetrical Demographic Dashboard (Minimalist, Corporate) */}
+          {/* RIGHT COLUMN: Prestige Asymmetrical Demographic Dashboard (No stats/percentages) */}
           <div className="lg:col-span-6 relative w-full flex items-center justify-center select-none">
             
             <div
@@ -199,18 +199,18 @@ export default function Hero() {
                 
                 <div className="grid grid-cols-3 gap-3">
                   <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 flex flex-col">
-                    <span className="text-[8px] text-white/40 font-mono uppercase">OOH Reach</span>
-                    <span className="text-xl font-black text-white mt-1 leading-none">8.4M</span>
-                    <span className="text-[7.5px] text-[#12B5B0] font-mono mt-1">+12.4% MoM</span>
+                    <span className="text-[8px] text-white/40 font-mono uppercase">OOH Coverage</span>
+                    <span className="text-lg font-black text-white mt-1 leading-none">EXTENSIVE</span>
+                    <span className="text-[7.5px] text-[#12B5B0] font-mono mt-1">Multi-Market</span>
                   </div>
                   <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 flex flex-col">
-                    <span className="text-[8px] text-white/40 font-mono uppercase">Avg. ROI</span>
-                    <span className="text-xl font-black text-[#1CA7C6] mt-1 leading-none">3.2x</span>
+                    <span className="text-[8px] text-white/40 font-mono uppercase">ROI Model</span>
+                    <span className="text-lg font-black text-[#1CA7C6] mt-1 leading-none">IMPACT</span>
                     <span className="text-[7.5px] text-white/30 font-mono mt-1">Verified</span>
                   </div>
                   <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 flex flex-col">
-                    <span className="text-[8px] text-white/40 font-mono uppercase">Precision</span>
-                    <span className="text-xl font-black text-white mt-1 leading-none">99.8%</span>
+                    <span className="text-[8px] text-white/40 font-mono uppercase">Campaign Sync</span>
+                    <span className="text-lg font-black text-white mt-1 leading-none">ACTIVE</span>
                     <span className="text-[7.5px] text-green-400 font-mono mt-1">Optimal</span>
                   </div>
                 </div>
@@ -237,7 +237,7 @@ export default function Hero() {
                   {/* Bottom fade to merge with card */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#090C15]/70 via-transparent to-transparent" />
                   {/* HUD labels */}
-                  <span className="absolute left-3 bottom-3 text-[8px] font-mono text-[#F2D400] font-bold drop-shadow-lg">OOH SCREENS: 1,200+ ACTIVE</span>
+                  <span className="absolute left-3 bottom-3 text-[8px] font-mono text-[#F2D400] font-bold drop-shadow-lg">OOH SCREENS: GLOBAL COVERAGE</span>
                   <span className="absolute right-3 bottom-3 text-[8px] font-mono text-[#12B5B0] font-bold drop-shadow-lg">DXB NEXUS</span>
                 </div>
               </div>

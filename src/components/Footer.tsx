@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 const footerLinks = {
-  Services: ["MediaScape", "CodeCraft Solutions", "AI Chatbots & Agents", "Tech Insight Suite", "Data Vision Wing"],
+  Services: ["Media Planning", "OOH & DOOH", "In-Flight Ads", "Taxi Advertising", "Transit Media", "Airport Ads"],
   Company: ["About Us", "Our Approach", "Case Studies", "Careers", "Contact"],
   Resources: ["Blog", "Media Kit", "Brand Guidelines", "Privacy Policy", "Terms of Service"],
 };
@@ -22,7 +22,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="gradient-dark text-white">
+    <footer className="bg-[#070b12] text-white border-t border-white/[0.04] select-none">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-20 pb-8">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
           {/* Brand Column */}
@@ -30,21 +30,21 @@ export default function Footer() {
             <a href="#" className="flex items-center gap-2.5 mb-6">
               <Image 
                 src="/images/logo.png" 
-                alt="AND Media Solutions" 
+                alt="AND Media Solutions LLC" 
                 width={120} 
                 height={60} 
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain filter brightness-0 invert"
               />
             </a>
             <p className="text-white/40 text-[15px] leading-relaxed max-w-sm mb-8 font-light">
-              Global media strategy and advertising solutions. We connect brands with audiences across borders, formats, and cultures.
+              AND Media Solutions LLC delivers global media strategy and advertising solutions. We connect brands with audiences across corridors, formats, and cultures.
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
                 <a key={social.label} href="#" aria-label={social.label}
-                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-teal/20 transition-all duration-300 group">
-                  <svg className="w-4 h-4 text-white/40 group-hover:text-brand-teal transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                  className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#12B5B0]/20 transition-all duration-300 group">
+                  <svg className="w-4 h-4 text-white/40 group-hover:text-[#12B5B0] transition-colors" fill="currentColor" viewBox="0 0 24 24">
                     <path d={social.path} />
                   </svg>
                 </a>
@@ -59,7 +59,7 @@ export default function Footer() {
               <ul className="space-y-3.5">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-[14px] text-white/35 hover:text-brand-teal transition-colors duration-300 font-light">
+                    <a href="#core-services" className="text-[14px] text-white/35 hover:text-[#12B5B0] transition-colors duration-300 font-light">
                       {link}
                     </a>
                   </li>
@@ -69,17 +69,17 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Contact Row (Redirects to Custom WhatsApp/Email modal Router) */}
+        {/* Contact Row (Redirects to Custom Form modal) */}
         <div className="flex flex-wrap items-center gap-6 py-8 border-t border-white/8 mb-8">
           <a 
-            href="mailto:communicate@andmedia.me" 
+            href="mailto:andmedia057@gmail.com" 
             onClick={handleContactClick}
-            className="flex items-center gap-2 text-white/40 hover:text-brand-teal transition-colors text-[14px]"
+            className="flex items-center gap-2 text-white/40 hover:text-[#12B5B0] transition-colors text-[14px]"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
-            communicate@andmedia.me
+            andmedia057@gmail.com
           </a>
           <span className="w-1 h-1 rounded-full bg-white/15" />
           <span className="flex items-center gap-2 text-white/40 text-[14px]">
@@ -94,7 +94,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-white/5">
           <p className="text-[13px] text-white/25 font-light">
-            © {new Date().getFullYear()} AND Media Solutions. All rights reserved.
+            © {new Date().getFullYear()} AND Media Solutions LLC. All rights reserved.
           </p>
           <p className="text-[12px] text-white/15">
             Crafted with precision for global impact.

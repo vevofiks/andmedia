@@ -112,8 +112,8 @@ export default function CTABanner() {
           sizes="100vw"
         />
         {/* Luxury Vignette & Dark Overlay for optimal readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070b12]/90 via-[#070b12]/75 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070b12] via-transparent to-[#070b12]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05080f]/95 via-[#05080f]/80 to-[#05080f]/35 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05080f]/95 via-transparent to-[#05080f]/75 z-10" />
       </div>
 
       {/* 2. Delicate Global Network Lines fading into sunset sky */}

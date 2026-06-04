@@ -10,64 +10,70 @@ gsap.registerPlugin(ScrollTrigger);
 const coreServices = [
   {
     image: "/images/ooh-billboard.png",
-    title: "OOH & DOOH\nAdvertising",
-    description: "Make your brand unmissable. We leverage high-impact outdoor and digital out-of-home placements to activate strategic brand amplification across the Middle East.",
-    link: "Learn More",
+    title: "OOH and DOOH",
+    subtitle: "Make Your Brand Unmissable",
+    description: "Most brands strive to be noticed. We make it happen!\n\nHow? We leverage the brands where attention matters most. As a global brand marketing agency, we activate strategic planning and brand amplification across the Middle East.",
+    link: "Request Consultation",
     num: "01",
-    accentGrad: "from-[#12B5B0] to-[#F2D400]",
+    accentGrad: "from-[#12B5B0] to-[#1CA7C6]",
     accentColor: "#12B5B0",
-    tag: "OUTDOOR MEDIA",
+    tag: "OOH & DOOH MEDIA",
   },
   {
     image: "/images/inflight-ad.png",
-    title: "In-Flight\nAdvertising",
-    description: "Attention, at 30,000 feet. Inflight advertising places your message in a focused, captive environment — every placement connects, resonates, and stays top-of-mind.",
-    link: "Learn More",
+    title: "In-flight Advertising",
+    subtitle: "Attention, At 30,000 Feet",
+    description: "Your brand deserves to be noticed where attention is real. Inflight advertising places your message in a focused, receptive environment. Every placement is designed to connect, resonate, and stay top-of-mind.",
+    link: "Request Consultation",
     num: "02",
-    accentGrad: "from-[#1CA7C6] to-[#12B5B0]",
+    accentGrad: "from-[#1CA7C6] to-[#F2D400]",
     accentColor: "#1CA7C6",
     tag: "IN-FLIGHT MEDIA",
   },
   {
-    image: "/images/taxi-ad.png",
-    title: "Taxi\nAdvertising",
-    description: "Put your brand in motion. Our taxi branding services place your message on high-traffic routes — ensuring consistent, high-frequency visibility on every ride.",
-    link: "Learn More",
+    image: "/images/taxi-ad-interior.png",
+    title: "Taxi Advertising",
+    subtitle: "Put Your Brand in Motion",
+    description: "Show up where your audience moves. Our taxi branding advertising services place your message on high-traffic routes, ensuring consistent, high-frequency visibility. Every ride enables you to keep the brand at the top of mind, ready to be chosen.",
+    link: "Request Consultation",
     num: "03",
-    accentGrad: "from-[#F2D400] to-[#E5A900]",
+    accentGrad: "from-[#F2D400] to-[#12B5B0]",
     accentColor: "#F2D400",
-    tag: "TRANSIT MEDIA",
+    tag: "TAXI MEDIA",
   },
   {
     image: "/images/global-brand-expansion.png",
     title: "Global Brand\nExpansion Strategy",
-    description: "Identify high-impact airports, cities, and travel corridors to expand your brand globally with high prestige.",
-    link: "Learn More",
+    subtitle: "Airports & Corridors",
+    description: "Identify high-impact airports, cities, and travel corridors.",
+    link: "Request Consultation",
     num: "04",
-    accentGrad: "from-[#12B5B0] to-[#1CA7C6]",
+    accentGrad: "from-[#12B5B0] to-[#F2D400]",
     accentColor: "#12B5B0",
-    tag: "GLOBAL STRATEGY",
+    tag: "EXPANSION STRATEGY",
   },
   {
     image: "/images/print-media-strategy.png",
     title: "Print Media\nStrategy",
-    description: "Take your brand into the world's most trusted, high-prestige publications with absolute authority.",
-    link: "Learn More",
+    subtitle: "Trusted Publications",
+    description: "Take your brand into the world’s most trusted publications.",
+    link: "Request Consultation",
     num: "05",
     accentGrad: "from-[#1CA7C6] to-[#12B5B0]",
     accentColor: "#1CA7C6",
-    tag: "PRINT & EDITORIAL",
+    tag: "PRINT STRATEGY",
   },
   {
     image: "/images/cross-cultural-marketing.png",
     title: "Cross-Cultural\nBrand Marketing",
-    description: "Orchestrate bespoke campaigns that resonate deeply across diverse audiences and drive absolute ROI.",
-    link: "Learn More",
+    subtitle: "Diverse Audiences",
+    description: "Run campaigns that work across diverse audiences.",
+    link: "Request Consultation",
     num: "06",
     accentGrad: "from-[#F2D400] to-[#E5A900]",
     accentColor: "#F2D400",
-    tag: "CULTURAL REACH",
-  },
+    tag: "CROSS-CULTURAL",
+  }
 ];
 
 export default function CoreServices() {
@@ -84,7 +90,7 @@ export default function CoreServices() {
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
         gsap.fromTo(card, { y: 60, opacity: 0, scale: 0.96 }, {
-          y: 0, opacity: 1, scale: 1, duration: 1.1, ease: "power3.out", delay: i * 0.1,
+          y: 0, opacity: 1, scale: 1, duration: 1.1, ease: "power3.out", delay: i * 0.08,
           scrollTrigger: { trigger: card, start: "top 92%", toggleActions: "play none none reverse" },
         });
       });
@@ -117,17 +123,18 @@ export default function CoreServices() {
             </span>
           </h2>
           <p className="text-white/55 text-[16px] sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            End-to-end media and brand transformation across regional borders, high-impact formats, and global cultures.
+            AND Media Solutions LLC delivers media planning and brand activation across international travel corridors, high-impact digital platforms, and premium out-of-home media.
           </p>
         </div>
 
-        {/* Cards Grid — 3 cols desktop, 2 tablet, 1 mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Cards Grid — 3 cols on desktop/large, 2 on tablet, 1 on mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {coreServices.map((service, index) => (
             <div
               key={index}
               ref={(el) => { if (el) cardsRef.current[index] = el; }}
               className="group relative overflow-hidden rounded-3xl min-h-[380px] cursor-pointer opacity-0"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-consult-modal"))}
             >
               {/* Full-bleed service image */}
               <Image
@@ -138,8 +145,8 @@ export default function CoreServices() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
 
-              {/* Dark gradient overlay — stronger at bottom for text legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#060810]/95 via-[#060810]/55 to-[#060810]/20 transition-opacity duration-500 group-hover:opacity-90" />
+              {/* Dark gradient overlay — extremely dark at bottom for perfect readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#03050c]/98 via-[#03050c]/75 to-[#03050c]/30 transition-opacity duration-500 group-hover:opacity-95" />
 
               {/* Accent colour tint on hover */}
               <div
@@ -156,7 +163,7 @@ export default function CoreServices() {
                 {/* Top row: index number + tag */}
                 <div className="flex items-center justify-between">
                   <span
-                    className="text-[10px] font-bold tracking-[0.25em] uppercase px-3 py-1 rounded-full border border-white/10 bg-black/30 backdrop-blur-sm"
+                    className="text-[9.5px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full border border-white/10 bg-black/35 backdrop-blur-sm"
                     style={{ color: service.accentColor }}
                   >
                     {service.tag}
@@ -168,10 +175,15 @@ export default function CoreServices() {
 
                 {/* Bottom content block */}
                 <div className="flex flex-col gap-3 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-2xl font-black text-white leading-tight whitespace-pre-line tracking-tight">
+                  {service.subtitle && (
+                    <span className="text-[11px] font-extrabold tracking-wider uppercase opacity-45 group-hover:opacity-80 transition-opacity duration-300" style={{ color: service.accentColor }}>
+                      {service.subtitle}
+                    </span>
+                  )}
+                  <h3 className="text-2xl font-black text-white leading-tight whitespace-pre-line tracking-tight text-shadow-md">
                     {service.title}
                   </h3>
-                  <p className="text-white/65 text-[13.5px] leading-relaxed font-light max-h-0 overflow-hidden group-hover:max-h-32 transition-all duration-500 ease-out">
+                  <p className="text-white/85 text-[13.5px] leading-relaxed font-light max-h-0 overflow-hidden group-hover:max-h-32 transition-all duration-500 ease-out">
                     {service.description}
                   </p>
                   <a
