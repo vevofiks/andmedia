@@ -1,36 +1,45 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const videoTestimonials = [
+const testimonials = [
   {
     id: "nair-rb",
     name: "Anuraj Nair",
-    title: "Marketing Lead",
-    brand: "R&B (Apparel Group)",
-    videoUrl: "https://www.youtube.com/embed/Abj2xmQQ38w",
-    description: "Collaborating on premium digital out-of-home (DOOH) corridors and high-visibility media placements across regional networks to elevate the R&B brand presence.",
+    title: "Head – Brand Marketing",
+    brand: "R&B",
+    description: "We partnered with AND Media to integrate the in-taxi screens into our seasonal launch strategy. The ability to deploy full-motion video within a captive and immersive environment, significantly boosted the engagement. The synergy of geographic precision and long dwell time allowed us to connect with customers at the right place and time. With a hassle-free setup and transparent data, the campaign delivered on our primary goals of brand reach and app acquisitions.",
     accentColor: "#12B5B0",
   },
   {
     id: "hassan-filli",
     name: "Ashraf Hassan",
-    title: "Brand Director",
+    title: "Head of Brand & Growth",
     brand: "FiLLi Cafe",
-    videoUrl: "https://www.youtube.com/embed/BGPCxD3zVlg",
-    description: "Activating interactive smart-screen taxi advertising and high-impact urban transit formats to drive brand recall and local consumer engagement.",
+    description: "Working with AND Media Solutions on our Dubai Taxi digital screen campaign through Binary Media was a very positive experience for FiLLi Cafe. The campaign delivered a strong response and helped create meaningful emotional recall for our brand. From the creative execution to setting up the right CTA, their team was professional, proactive, and highly supportive throughout the process. More than just media buying and distribution, they helped us understand the MROI, test different approaches, and refine the campaign to achieve the best possible results. We truly value their expertise and would be happy to work with them again in the future.",
     accentColor: "#F2D400",
   }
 ];
 
+const videos = [
+  "https://www.youtube.com/embed/aS3mH30i-K0",
+  "https://www.youtube.com/embed/uKY8n5ISq48",
+  "https://www.youtube.com/embed/uKY8n5ISq48"
+];
+
 export default function Testimonials() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const leftCardRef = useRef<HTMLDivElement>(null);
+  const rightCardRef = useRef<HTMLDivElement>(null);
+
+  const maxItems = Math.max(testimonials.length, videos.length);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -48,30 +57,30 @@ export default function Testimonials() {
           }
         }
       );
-
-      // Slide and fade cards
-      cardsRef.current.forEach((card, i) => {
-        if (!card) return;
-        gsap.fromTo(card,
-          { opacity: 0, y: 40, scale: 0.97 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1,
-            ease: "power3.out",
-            delay: i * 0.2,
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-            }
-          }
-        );
-      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
+
+  // Auto-changing carousel logic
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % maxItems);
+    }, 5000); // 5 seconds per slide
+
+    return () => clearInterval(timer);
+  }, [maxItems]);
+
+  // Animate content changes
+  useEffect(() => {
+    if (leftCardRef.current && rightCardRef.current) {
+      gsap.fromTo(leftCardRef.current, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" });
+      gsap.fromTo(rightCardRef.current, { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" });
+    }
+  }, [activeIndex]);
+
+  const activeTestimonial = testimonials[activeIndex % testimonials.length];
+  const activeVideo = videos[activeIndex % videos.length];
 
   return (
     <section ref={sectionRef} id="testimonials" className="py-24 bg-[#0A0D14] overflow-hidden select-none text-white border-b border-white/[0.04]">
@@ -95,57 +104,83 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Video Testimonials Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {videoTestimonials.map((testimonial, idx) => (
-            <div
-              key={testimonial.id}
-              ref={(el) => { if (el) cardsRef.current[idx] = el; }}
-              className="relative bg-white/[0.02] border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-md shadow-2xl flex flex-col justify-between overflow-hidden opacity-0"
-            >
-              {/* Dynamic glow mesh inside card */}
-              <div 
-                className="absolute -top-1/4 -right-1/4 w-40 h-40 rounded-full blur-3xl pointer-events-none opacity-20"
-                style={{ backgroundColor: testimonial.accentColor }}
-              />
+        {/* Two-Column Carousel Layout */}
+        <div 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+        >
+          
+          {/* Left Side: Testimonial Text */}
+          <div 
+            ref={leftCardRef} 
+            className="relative bg-white/[0.02] border border-white/10 rounded-3xl p-8 sm:p-10 backdrop-blur-md shadow-2xl flex flex-col justify-between overflow-hidden min-h-[400px]"
+          >
+            {/* Dynamic glow mesh inside card */}
+            <div 
+              className="absolute -top-1/4 -right-1/4 w-40 h-40 rounded-full blur-3xl pointer-events-none opacity-20 transition-colors duration-700"
+              style={{ backgroundColor: activeTestimonial.accentColor }}
+            />
 
-              {/* Responsive Video Container */}
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-6 border border-white/10 shadow-lg bg-black">
-                <iframe
-                  src={testimonial.videoUrl}
-                  title={`${testimonial.name} - ${testimonial.brand} Testimonial`}
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  loading="lazy"
-                />
+            <div className="flex flex-col gap-6 text-left h-full justify-center">
+              {/* Quote Icon */}
+              <div className="text-6xl text-white/20 font-serif leading-none mt-2">
+                &ldquo;
               </div>
 
-              {/* Quote Description */}
-              <div className="flex flex-col gap-4 text-left">
-                <div className="flex items-center gap-3">
-                  <div 
-                    className="w-10 h-10 rounded-full flex items-center justify-center shadow-md font-bold text-white text-[14px]"
-                    style={{ backgroundColor: `${testimonial.accentColor}25`, border: `1px solid ${testimonial.accentColor}50` }}
-                  >
-                    {testimonial.name[0]}
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-white leading-tight font-sans">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-[12.5px] font-bold mt-0.5 tracking-wider uppercase" style={{ color: testimonial.accentColor }}>
-                      {testimonial.brand}
-                    </p>
-                  </div>
+              <p className="text-white/70 text-[16px] sm:text-[17px] font-light leading-relaxed font-body">
+                {activeTestimonial.description}
+              </p>
+
+              <div className="flex items-center gap-4 mt-8 pt-8 border-t border-white/10">
+                <div 
+                  className="w-14 h-14 rounded-full flex items-center justify-center shadow-md font-bold text-white text-[18px] transition-colors duration-700"
+                  style={{ backgroundColor: `${activeTestimonial.accentColor}25`, border: `1px solid ${activeTestimonial.accentColor}50` }}
+                >
+                  {activeTestimonial.name[0]}
                 </div>
-
-                <p className="text-white/60 text-[14px] font-light leading-relaxed font-body mt-2">
-                  {testimonial.description}
-                </p>
+                <div>
+                  <h4 className="text-[19px] font-bold text-white leading-tight font-sans">
+                    {activeTestimonial.name}
+                  </h4>
+                  <p className="text-[13px] font-bold mt-1 tracking-wider uppercase transition-colors duration-700" style={{ color: activeTestimonial.accentColor }}>
+                    {activeTestimonial.title}, {activeTestimonial.brand}
+                  </p>
+                </div>
               </div>
-
             </div>
+          </div>
+
+          {/* Right Side: Video */}
+          <div 
+            ref={rightCardRef} 
+            className="relative bg-white/[0.02] border border-white/10 rounded-3xl p-3 sm:p-4 backdrop-blur-md shadow-2xl flex flex-col justify-center overflow-hidden"
+          >
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg bg-black border border-white/5">
+              <iframe
+                src={activeVideo}
+                title="Video Testimonial"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="flex items-center justify-center gap-3 mt-12">
+          {Array.from({ length: maxItems }).map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIndex(idx)}
+              className={`h-2 rounded-full transition-all duration-500 ${
+                activeIndex === idx 
+                  ? "w-8 bg-[#12B5B0]" 
+                  : "w-2 bg-white/20 hover:bg-white/40"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
           ))}
         </div>
 
