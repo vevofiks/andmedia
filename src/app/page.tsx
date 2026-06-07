@@ -6,6 +6,7 @@ import TrustStrip from "@/components/TrustStrip";
 import ProcessSection from "@/components/ProcessSection";
 import GlobalReach from "@/components/GlobalReach";
 import Testimonials from "@/components/Testimonials";
+import VideoShowcase from "@/components/VideoShowcase";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import ConsultModal from "@/components/ConsultModal";
@@ -22,6 +23,7 @@ export default function Home() {
         <ProcessSection />
         <GlobalReach />
         <Testimonials />
+        <VideoShowcase />
         <CTABanner />
       </main>
       <Footer />
