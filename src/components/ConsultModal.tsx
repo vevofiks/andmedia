@@ -69,7 +69,22 @@ export default function ConsultModal() {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate premium dispatch loading state, then show success state
+
+    // Construct the mailto redirect
+    const subject = encodeURIComponent(`Consultation Request: ${formData.name} - ${formData.company}`);
+    const body = encodeURIComponent(
+      `Consultation Request Details:\n\n` +
+      `Full Name: ${formData.name}\n` +
+      `Corporate Email: ${formData.email}\n` +
+      `Company Name: ${formData.company || "Not provided"}\n` +
+      `Target Capability: ${formData.service}\n\n` +
+      `Brief Message:\n${formData.message}\n`
+    );
+
+    // Redirect to user's mail client
+    window.location.href = `mailto:andmedia057@gmail.com?subject=${subject}&body=${body}`;
+
+    // Show visual success state
     gsap.to(".consult-form-inner", {
       opacity: 0,
       y: -10,
@@ -90,7 +105,7 @@ export default function ConsultModal() {
   return (
     <div
       ref={modalBgRef}
-      className="fixed inset-0 z-[999999] flex items-center justify-center p-4 opacity-0 select-none"
+      className="fixed inset-0 z-[999999] flex items-center justify-center p-4 opacity-0"
     >
       {/* Dark backdrop blur */}
       <div
@@ -101,7 +116,7 @@ export default function ConsultModal() {
       {/* Presentation Card container */}
       <div
         ref={modalCardRef}
-        className="relative w-full max-w-[480px] bg-[#0A0D15] border border-white/10 rounded-3xl p-8 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-xl opacity-0 z-10 flex flex-col justify-between overflow-hidden"
+        className="relative w-full max-w-[480px] max-h-[90vh] overflow-y-auto bg-[#0A0D15] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-[0_30px_90px_rgba(0,0,0,0.8)] backdrop-blur-xl opacity-0 z-10 flex flex-col justify-between"
       >
         {/* Subtle glowing color mesh */}
         <div className="absolute -top-1/4 -right-1/4 w-40 h-40 bg-[#12B5B0]/10 rounded-full blur-3xl pointer-events-none" />

@@ -18,11 +18,11 @@ const footerLinkCategories: FooterLinkCategory[] = [
     title: "Services",
     links: [
       { label: "Media Planning", href: "#core-services" },
-      { label: "OOH & DOOH", href: "#services" },
-      { label: "In-Flight Ads", href: "#services" },
-      { label: "Taxi Advertising", href: "#services" },
-      { label: "Transit Media", href: "#services" },
-      { label: "Airport Ads", href: "#services" },
+      { label: "OOH & DOOH", href: "#core-services" },
+      { label: "In-Flight Ads", href: "#core-services" },
+      { label: "Taxi Advertising", href: "#core-services" },
+      { label: "Transit Media", href: "#core-services" },
+      { label: "Airport Ads", href: "#core-services" },
     ],
   },
   {
@@ -33,16 +33,6 @@ const footerLinkCategories: FooterLinkCategory[] = [
       { label: "Case Studies", href: "#video-showcase" },
       { label: "Careers", href: "#cta" },
       { label: "Contact", href: "#cta", isModal: true },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Blog", href: "#" },
-      { label: "Media Kit", href: "#" },
-      { label: "Brand Guidelines", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
     ],
   },
 ];
@@ -63,7 +53,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#070b12] text-white border-t border-white/[0.04] select-none">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-20 pb-8">
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+        <div className="grid lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2.5 mb-6">
