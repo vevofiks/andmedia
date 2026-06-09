@@ -67,10 +67,13 @@ export default function ProcessSection() {
       mm.add("(min-width: 1024px)", () => {
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 65%",
-            end: "bottom 35%",
-            scrub: 1,
+            trigger: sectionRef.current,
+            start: "top 80px",
+            end: "+=900",
+            scrub: 1.5,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
           },
         });
 
@@ -85,10 +88,10 @@ export default function ProcessSection() {
           const startPoint = (i * 1.6);
 
           tl.to(circlesRef.current[i], {
-            borderColor: i === 4 ? "#F2D400" : "#12B5B0",
+            borderColor: i === 4 ? "#E59E00" : "#12B5B0",
             backgroundColor: "#ffffff",
             boxShadow: i === 4 
-              ? "0 0 30px rgba(242, 212, 0, 0.4)" 
+              ? "0 0 30px rgba(229, 158, 0, 0.4)" 
               : "0 0 30px rgba(18, 181, 176, 0.4)",
             scale: 1.2,
             duration: 1,
@@ -96,7 +99,7 @@ export default function ProcessSection() {
           }, startPoint)
           
           .to(circlesRef.current[i].querySelector(".step-num"), {
-            color: i === 4 ? "#F2D400" : "#12B5B0",
+            color: i === 4 ? "#E59E00" : "#12B5B0",
             scale: 1.05,
             duration: 1
           }, startPoint)
@@ -108,7 +111,7 @@ export default function ProcessSection() {
           }, startPoint)
 
           .fromTo(statsRef.current[i],
-            { opacity: 0, y: 15 },
+            { opacity: 0.2, y: 15 },
             { opacity: 1, y: 0, duration: 1.2, ease: "back.out(1.5)" },
             startPoint + 0.3
           );
@@ -131,10 +134,10 @@ export default function ProcessSection() {
             { scale: 0.95, borderColor: "rgba(7, 17, 31, 0.1)", boxShadow: "none" },
             {
               scale: 1.15,
-              borderColor: i === 4 ? "#F2D400" : "#12B5B0",
+              borderColor: i === 4 ? "#E59E00" : "#12B5B0",
               backgroundColor: "#ffffff",
               boxShadow: i === 4 
-                ? "0 0 25px rgba(242, 212, 0, 0.3)" 
+                ? "0 0 25px rgba(229, 158, 0, 0.3)" 
                 : "0 0 25px rgba(18, 181, 176, 0.3)",
               duration: 0.8,
               ease: "power2.out",
@@ -150,7 +153,7 @@ export default function ProcessSection() {
           gsap.fromTo(circlesRef.current[i].querySelector(".step-num"),
             { color: "rgba(7, 17, 31, 0.25)" },
             {
-              color: i === 4 ? "#F2D400" : "#12B5B0",
+              color: i === 4 ? "#E59E00" : "#12B5B0",
               duration: 0.6,
               scrollTrigger: {
                 trigger: circlesRef.current[i],
@@ -200,7 +203,7 @@ export default function ProcessSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="process" className="section-padding bg-white overflow-hidden relative py-16 lg:py-24 select-none">
+    <section ref={sectionRef} id="process" className="bg-white overflow-hidden relative pt-16 pb-32 lg:pt-24 lg:pb-44 select-none">
       
       {/* Dynamic Evolving Background Graphic */}
       <div ref={bgGlowRef} className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-brand-teal/[0.03] rounded-full blur-[120px] pointer-events-none" />
@@ -246,16 +249,16 @@ export default function ProcessSection() {
               <div
                 key={i}
                 ref={(el) => { if (el) stepsRef.current[i] = el; }}
-                className="flex flex-col items-center text-center group transition-all duration-500 opacity-60 lg:translate-y-4"
+                className="flex flex-col items-center text-center group transition-all duration-500 opacity-90 lg:translate-y-4"
               >
                 {/* Circle step number indicator wrapper */}
                 <div className="relative mb-6">
                   {/* Outer circle - bg-white & z-30 ensures progress lines run cleanly behind */}
                   <div
                     ref={(el) => { if (el) circlesRef.current[i] = el; }}
-                    className="w-[84px] h-[84px] rounded-full border border-brand-dark/10 flex items-center justify-center bg-white shadow-sm transition-all duration-500 relative z-30 group-hover:shadow-[0_10px_35px_rgba(18,181,176,0.15)] group-hover:border-brand-teal/40"
+                    className="w-[84px] h-[84px] rounded-full border border-brand-dark/15 flex items-center justify-center bg-white shadow-sm transition-all duration-500 relative z-30 group-hover:shadow-[0_10px_35px_rgba(18,181,176,0.15)] group-hover:border-brand-teal/40"
                   >
-                    <span className="step-num text-2xl font-extrabold text-brand-dark/30 tracking-tight transition-colors duration-500 font-sans">
+                    <span className="step-num text-2xl font-extrabold text-brand-dark/55 tracking-tight transition-colors duration-500 font-sans">
                       {step.number}
                     </span>
                   </div>
@@ -265,7 +268,7 @@ export default function ProcessSection() {
                 <h3 className="text-xl font-bold text-brand-dark mb-2 tracking-tight font-sans">
                   {step.title}
                 </h3>
-                <p className="text-brand-dark/50 text-[14px] leading-relaxed font-light font-body max-w-[220px]">
+                <p className="text-brand-dark/70 text-[14px] leading-relaxed font-light font-body max-w-[220px]">
                   {step.desc}
                 </p>
 
@@ -277,7 +280,7 @@ export default function ProcessSection() {
                   <span className="block text-base font-extrabold text-brand-dark font-sans leading-none tracking-tight">
                     {step.stat}
                   </span>
-                  <span className="block text-[9px] text-brand-dark/40 font-bold uppercase tracking-wider mt-1 leading-none">
+                  <span className="block text-[9px] text-brand-dark/55 font-bold uppercase tracking-wider mt-1 leading-none">
                     {step.statLabel}
                   </span>
                 </div>

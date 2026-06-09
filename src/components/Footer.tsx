@@ -2,11 +2,50 @@
 
 import Image from "next/image";
 
-const footerLinks = {
-  Services: ["Media Planning", "OOH & DOOH", "In-Flight Ads", "Taxi Advertising", "Transit Media", "Airport Ads"],
-  Company: ["About Us", "Our Approach", "Case Studies", "Careers", "Contact"],
-  Resources: ["Blog", "Media Kit", "Brand Guidelines", "Privacy Policy", "Terms of Service"],
-};
+interface FooterLinkItem {
+  label: string;
+  href: string;
+  isModal?: boolean;
+}
+
+interface FooterLinkCategory {
+  title: string;
+  links: FooterLinkItem[];
+}
+
+const footerLinkCategories: FooterLinkCategory[] = [
+  {
+    title: "Services",
+    links: [
+      { label: "Media Planning", href: "#core-services" },
+      { label: "OOH & DOOH", href: "#services" },
+      { label: "In-Flight Ads", href: "#services" },
+      { label: "Taxi Advertising", href: "#services" },
+      { label: "Transit Media", href: "#services" },
+      { label: "Airport Ads", href: "#services" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About Us", href: "#global-reach" },
+      { label: "Our Approach", href: "#process" },
+      { label: "Case Studies", href: "#video-showcase" },
+      { label: "Careers", href: "#cta" },
+      { label: "Contact", href: "#cta", isModal: true },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Blog", href: "#" },
+      { label: "Media Kit", href: "#" },
+      { label: "Brand Guidelines", href: "#" },
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms of Service", href: "#" },
+    ],
+  },
+];
 
 const socialLinks = [
   { label: "LinkedIn", path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" },
@@ -30,14 +69,14 @@ export default function Footer() {
             <a href="#" className="flex items-center gap-2.5 mb-6">
               <Image 
                 src="/images/logo.png" 
-                alt="AND Media Solutions LLC" 
+                alt="AND Media Solutions" 
                 width={120} 
                 height={60} 
-                className="h-12 w-auto object-contain filter brightness-0 invert"
+                className="h-12 w-auto object-contain"
               />
             </a>
-            <p className="text-white/40 text-[15px] leading-relaxed max-w-sm mb-8 font-light">
-              AND Media Solutions LLC delivers global media strategy and advertising solutions. We connect brands with audiences across corridors, formats, and cultures.
+            <p className="text-white/40 text-[15px] leading-relaxed max-w-sm mb-8 font-light font-body">
+              AND Media Solutions delivers global media strategy and advertising solutions. We connect brands with audiences across corridors, formats, and cultures.
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-4">
@@ -53,15 +92,28 @@ export default function Footer() {
           </div>
 
           {/* Link Columns */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h4 className="text-[13px] font-bold text-white/70 uppercase tracking-[0.15em] mb-6">{title}</h4>
+          {footerLinkCategories.map((category) => (
+            <div key={category.title}>
+              <h4 className="text-[13px] font-bold text-white/70 uppercase tracking-[0.15em] mb-6">{category.title}</h4>
               <ul className="space-y-3.5">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a href="#core-services" className="text-[14px] text-white/35 hover:text-[#12B5B0] transition-colors duration-300 font-light">
-                      {link}
-                    </a>
+                {category.links.map((link) => (
+                  <li key={link.label}>
+                    {link.isModal ? (
+                      <a 
+                        href={link.href} 
+                        onClick={handleContactClick}
+                        className="text-[14px] text-white/35 hover:text-[#12B5B0] transition-colors duration-300 font-light font-body"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <a 
+                        href={link.href} 
+                        className="text-[14px] text-white/35 hover:text-[#12B5B0] transition-colors duration-300 font-light font-body"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -94,7 +146,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-white/5">
           <p className="text-[13px] text-white/25 font-light">
-            © {new Date().getFullYear()} AND Media Solutions LLC. All rights reserved.
+            © {new Date().getFullYear()} AND Media Solutions. All rights reserved.
           </p>
           <p className="text-[12px] text-white/15">
             Crafted with precision for global impact.

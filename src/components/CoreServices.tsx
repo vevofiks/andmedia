@@ -123,7 +123,7 @@ export default function CoreServices() {
             </span>
           </h2>
           <p className="text-white/55 text-[16px] sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-            AND Media Solutions LLC delivers media planning and brand activation across international travel corridors, high-impact digital platforms, and premium out-of-home media.
+            AND Media Solutions delivers media planning and brand activation across international travel corridors, high-impact digital platforms, and premium out-of-home media.
           </p>
         </div>
 

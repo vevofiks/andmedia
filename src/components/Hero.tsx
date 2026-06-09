@@ -115,7 +115,7 @@ export default function Hero() {
             {/* Minimalist eyebrow */}
             <div ref={eyebrowRef} className="opacity-0">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase font-sans">
-                AND Media Solutions LLC • GLOBAL MEDIA PLANNING
+                AND Media Solutions • GLOBAL MEDIA PLANNING
               </span>
             </div>
 
@@ -135,7 +135,8 @@ export default function Hero() {
             {/* Executive Description */}
             <div ref={descRef} className="opacity-0">
               <p className="text-base sm:text-lg text-white/50 leading-relaxed font-body font-light max-w-lg">
-                AND Media Solutions LLC delivers international media planning, OOH, DOOH, transit, airport, taxi, and in-flight advertising across borders. Corporate campaigns, scaled perfectly and executed with absolute precision.
+                AND Media Solutions delivers OOH, DOOH, transit, airport and in-flight advertising across key markets.
+                <span className="block mt-2">Corporate campaigns, scaled perfectly and executed with absolute precision.</span>
               </p>
             </div>
 

@@ -125,7 +125,7 @@ export default function ConsultModal() {
             Connect With Our Team
           </h3>
           <p className="text-white/50 text-[12.5px] font-light leading-relaxed mt-2 font-body">
-            Initiate a strategic media planning audit with AND Media Solutions LLC.
+            Initiate a strategic media planning audit with AND Media Solutions.
           </p>
         </div>
 
@@ -243,7 +243,7 @@ export default function ConsultModal() {
             </a>
           </p>
           <p className="text-[9.5px] text-white/20 font-mono tracking-wider mt-4">
-            AND MEDIA SOLUTIONS LLC • DUBAI HQ
+            AND MEDIA SOLUTIONS • DUBAI HQ
           </p>
         </div>
       </div>

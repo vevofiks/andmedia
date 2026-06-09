@@ -8,47 +8,47 @@ gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    id: "nair-rb",
-    name: "Anuraj Nair",
-    title: "Head – Brand Marketing",
-    brand: "R&B",
-    description: "We partnered with AND Media to integrate the in-taxi screens into our seasonal launch strategy. The ability to deploy full-motion video within a captive and immersive environment, significantly boosted the engagement. The synergy of geographic precision and long dwell time allowed us to connect with customers at the right place and time. With a hassle-free setup and transparent data, the campaign delivered on our primary goals of brand reach and app acquisitions.",
-    accentColor: "#12B5B0",
-  },
-  {
     id: "hassan-filli",
     name: "Ashraf Hassan",
     title: "Head of Brand & Growth",
     brand: "FiLLi Cafe",
-    description: "Working with AND Media Solutions on our Dubai Taxi digital screen campaign through Binary Media was a very positive experience for FiLLi Cafe. The campaign delivered a strong response and helped create meaningful emotional recall for our brand. From the creative execution to setting up the right CTA, their team was professional, proactive, and highly supportive throughout the process. More than just media buying and distribution, they helped us understand the MROI, test different approaches, and refine the campaign to achieve the best possible results. We truly value their expertise and would be happy to work with them again in the future.",
-    accentColor: "#F2D400",
+    description: "Working with AND Media Solutions on our Dubai Taxi digital screen campaign was a very positive experience for FiLLi Cafe. The campaign delivered a strong response and helped create meaningful emotional recall. From the creative execution to setting up the right CTA, their team was professional and proactive. They helped us understand the MROI, test different approaches, and refine the campaign to achieve the best possible results.",
+    accentColor: "#12B5B0", // Teal
+  },
+  {
+    id: "nair-rb",
+    name: "Anuraj Nair",
+    title: "Head – Brand Marketing",
+    brand: "R&B",
+    description: "We partnered with AND Media to integrate the in-taxi screens into our seasonal launch strategy. The ability to deploy full-motion video within a captive and immersive environment significantly boosted engagement. The synergy of geographic precision and long dwell time allowed us to connect with customers at the right place and time. The campaign delivered on our primary goals of brand reach and app acquisitions.",
+    accentColor: "#1CA7C6", // Cyan
   }
 ];
 
 export default function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      cardsRef.current.forEach((card, i) => {
-        if (!card) return;
-        gsap.fromTo(card,
-          { opacity: 0, y: 60, rotationX: 10 },
-          {
-            opacity: 1,
-            y: 0,
-            rotationX: 0,
-            duration: 1.2,
-            ease: "expo.out",
-            delay: i * 0.2,
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-            }
+      if (!gridRef.current) return;
+      const cards = cardsRef.current.filter(Boolean);
+      gsap.fromTo(cards,
+        { opacity: 0, y: 60, rotationX: 10 },
+        {
+          opacity: 1,
+          y: 0,
+          rotationX: 0,
+          duration: 1.2,
+          ease: "expo.out",
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 85%",
           }
-        );
-      });
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -73,7 +73,7 @@ export default function Testimonials() {
         </div>
 
         {/* Editorial Layout for Quotes */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+        <div ref={gridRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-5xl">
           {testimonials.map((testimonial, idx) => (
             <div
               key={testimonial.id}
@@ -88,27 +88,27 @@ export default function Testimonials() {
                 &ldquo;
               </div>
 
-              <div className="relative z-10 flex flex-col h-full border-l-[3px] border-white/[0.03] pl-8 sm:pl-12 group-hover:border-[#12B5B0]/40 transition-colors duration-700">
-                <p className="text-white/80 text-[18px] sm:text-[20px] lg:text-[22px] font-light leading-[1.7] font-serif mb-12">
+              <div className="relative z-10 flex flex-col h-full border-l-[3px] border-white/[0.03] pl-6 sm:pl-8 group-hover:border-[#12B5B0]/40 transition-colors duration-700">
+                <p className="text-white/85 text-[16px] sm:text-[18px] font-light leading-[1.65] font-serif mb-10">
                   {testimonial.description}
                 </p>
 
-                <div className="mt-auto flex items-center gap-5">
+                <div className="mt-auto flex items-center gap-4">
                   <div 
-                    className="w-[68px] h-[68px] rounded-full flex items-center justify-center font-bold text-white text-[24px] shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden group-hover:scale-105 transition-transform duration-500"
+                    className="w-[56px] h-[56px] rounded-full flex items-center justify-center font-bold text-white text-[20px] shadow-[0_8px_24px_rgba(0,0,0,0.5)] relative overflow-hidden group-hover:scale-105 transition-transform duration-500"
                   >
                     <div className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover:opacity-30" style={{ backgroundColor: testimonial.accentColor }} />
                     <div className="absolute inset-0 border-[1px] opacity-40 rounded-full" style={{ borderColor: testimonial.accentColor }} />
                     <span className="relative z-10 text-shadow-sm">{testimonial.name[0]}</span>
                   </div>
                   <div>
-                    <h4 className="text-[22px] font-black text-white leading-tight font-sans tracking-tight">
+                    <h4 className="text-[18px] font-black text-white leading-tight font-sans tracking-tight">
                       {testimonial.name}
                     </h4>
-                    <p className="text-[13px] font-bold tracking-widest uppercase mt-1.5" style={{ color: testimonial.accentColor }}>
+                    <p className="text-[11px] font-bold tracking-widest uppercase mt-1" style={{ color: testimonial.accentColor }}>
                       {testimonial.title}
                     </p>
-                    <p className="text-[13px] text-white/40 mt-1 tracking-wider uppercase font-medium">
+                    <p className="text-[11px] text-white/40 mt-0.5 tracking-wider uppercase font-medium">
                       {testimonial.brand}
                     </p>
                   </div>

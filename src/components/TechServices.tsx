@@ -92,7 +92,7 @@ export default function TechServices() {
 
   // Chat console states
   const [messages, setMessages] = useState<Message[]>([
-    { sender: "bot", text: "Welcome to Maximus Mediascape AI Console. Click an audit query chip below to run a real-time system check." }
+    { sender: "bot", text: "Welcome to our AI Console. Click an audit query chip below to run a real-time system check." }
   ]);
   const [isTyping, setIsTyping] = useState(false);
 
@@ -187,7 +187,7 @@ export default function TechServices() {
             </h2>
           </div>
           <p className="text-white/40 text-[14px] sm:text-[15px] font-light max-w-sm font-body leading-relaxed">
-            Custom website design, full-scale redesigns, workflow automation, and organic search marketing powered by Maximus Mediascape.
+            Custom website design, full-scale redesigns, workflow automation, and organic search marketing powered by AND Media Solutions.
           </p>
         </div>
 
@@ -375,7 +375,7 @@ export default function TechServices() {
                           }`}
                         >
                           <span className="text-[7.5px] font-bold text-white/30 tracking-wider uppercase mb-0.5 font-mono">
-                            {msg.sender === "user" ? "Client" : "Maximus AI Agent"}
+                            {msg.sender === "user" ? "Client" : "AND Media AI Agent"}
                           </span>
                           <p>{msg.text}</p>
                         </div>
@@ -383,7 +383,7 @@ export default function TechServices() {
                       
                       {isTyping && (
                         <div className="bg-white/5 border border-white/5 text-white/95 rounded-2xl rounded-bl-none px-3.5 py-2.5 self-start mr-12 max-w-[85%]">
-                          <span className="text-[7.5px] font-bold text-white/30 tracking-wider uppercase mb-1 font-mono">Maximus AI Agent</span>
+                          <span className="text-[7.5px] font-bold text-white/30 tracking-wider uppercase mb-1 font-mono">AND Media AI Agent</span>
                           <div className="flex items-center gap-1.5 py-0.5">
                             <div className="w-1.5 h-1.5 rounded-full bg-brand-teal animate-bounce" style={{ animationDelay: "0s", animationDuration: "0.8s" }} />
                             <div className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-bounce" style={{ animationDelay: "0.2s", animationDuration: "0.8s" }} />
