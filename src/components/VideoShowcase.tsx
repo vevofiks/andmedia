@@ -29,7 +29,7 @@ const campaigns: Campaign[] = [
     sector: "Luxury Retail",
     title: "Teal & Gold Luxury DOOH",
     description: "High-impact digital screen rollout targeting affluent shoppers during peak festive seasons across high-traffic Dubai corridors.",
-    youtubeId: "uKY8n5ISq48",
+    youtubeId: "8S_Uf3DCSxc",
     stats: [
       { label: "CTR", value: "7.2%" },
       { label: "Impressions", value: "2.4M+" },
@@ -194,13 +194,6 @@ export default function VideoShowcase() {
                     loading="lazy"
                   />
                   
-                  {/* Top-left Brand Pill */}
-                  <div className="absolute top-4 left-4 z-20">
-                    <span className="text-[10px] font-bold uppercase tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-white/90 px-3 py-1 rounded-full">
-                      {campaign.sector}
-                    </span>
-                  </div>
-
                   {/* Large Premium Play Button Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center z-20">
                     <div className="relative flex items-center justify-center">
@@ -234,7 +227,7 @@ export default function VideoShowcase() {
                 {/* Content Section */}
                 <div className="flex flex-col flex-grow mt-6">
                   {/* Brand & Heading */}
-                  <div className="mb-4">
+                  <div className="mb-3">
                     <h3 className="text-2xl font-black text-white leading-tight font-sans tracking-tight mb-1">
                       {campaign.brand}
                     </h3>
@@ -244,30 +237,9 @@ export default function VideoShowcase() {
                   </div>
 
                   {/* Campaign Description */}
-                  <p className="text-white/60 text-sm font-light leading-relaxed mb-6 font-body">
+                  <p className="text-white/60 text-sm font-light leading-relaxed font-body">
                     {campaign.description}
                   </p>
-
-                  {/* Metric Capsules */}
-                  <div className="mt-auto pt-5 border-t border-white/[0.05] grid grid-cols-3 gap-2">
-                    {campaign.stats.map((stat, sIdx) => (
-                      <div 
-                        key={sIdx}
-                        className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/[0.02] border border-white/5 transition-colors duration-300 hover:bg-white/[0.04]"
-                      >
-                        <span 
-                          className="text-sm font-black tracking-tight"
-                          style={{ color: campaign.accentColor }}
-                        >
-                          {stat.value}
-                        </span>
-                        <span className="text-[9px] uppercase tracking-wider text-white/40 mt-0.5 font-semibold">
-                          {stat.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
                 </div>
 
               </div>
