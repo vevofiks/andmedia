@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const dashboardCards = [
   { title: "Airlines Network", value: "IN-FLIGHT", details: "Indigo, Air India, Spice Jet, Emirates, Etihad, Singapore, British", icon: "⌗" },
   { title: "OOH Locations", value: "INFLUENTIAL", details: "Prime digital billboard hubs", icon: "⚿" },
-  { title: "Transit Media", value: "CONNECTED", details: "Interactive smart city taxis & buses", icon: "⛟" }
+  { title: "Transit Media", value: "CONNECTED", details: "Interactive smart city transit networks", icon: "⛟" }
 ];
 
 const connectionPoints = [

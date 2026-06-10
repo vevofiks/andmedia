@@ -42,7 +42,7 @@ const campaigns: Campaign[] = [
     brand: "FiLLi Cafe",
     sector: "Food & Beverage",
     title: "Brand Recall & Growth",
-    description: "Dynamic full-motion campaign on Dubai Taxi screens targeting daily commuters, driving high engagement and franchise visits.",
+    description: "Dynamic full-motion campaign on Dubai transit screens targeting daily commuters, driving high engagement and franchise visits.",
     youtubeId: "uKY8n5ISq48", // Using the provided URL
     stats: [
       { label: "MROI", value: "4.5x" },

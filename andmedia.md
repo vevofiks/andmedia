@@ -163,9 +163,9 @@ Massive LED billboard visuals with cinematic city environment.
 
 Luxury aircraft interior visuals with premium airline atmosphere.
 
-### 3. Taxi Advertising
+### 3. Transit Advertising
 
-High-end taxi branding visuals in modern urban environments.
+High-end transit branding visuals in modern urban environments.
 
 ## CARD DESIGN STYLE
 
@@ -302,7 +302,7 @@ Create a luxury testimonial section.
 ### Include
 
 JoyAlukkas Case Study:
-7% CTR through DOOH taxi campaigns.
+7% CTR through DOOH transit campaigns.
 
 R&B Testimonial:
 High recall and strong strategic alignment.

@@ -200,7 +200,7 @@ export default function ConsultModal() {
                 <option value="International Media Planning">International Media Planning</option>
                 <option value="OOH & DOOH Advertising">OOH & DOOH Advertising</option>
                 <option value="In-Flight Advertising">In-Flight Advertising</option>
-                <option value="Taxi Advertising">Taxi Advertising</option>
+                <option value="Transit Advertising">Transit Advertising</option>
                 <option value="Transit Media">Transit Media</option>
                 <option value="Airport Advertising">Airport Advertising</option>
                 <option value="Media Buying & Planning">Media Buying & Planning</option>

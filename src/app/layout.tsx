@@ -17,14 +17,14 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "AND Media Solutions | Global Media Strategy & Advertising",
   description:
-    "AND Media Solutions delivers international media planning, OOH, DOOH, in-flight, and taxi advertising across borders. Premium global brand strategy from Dubai to the world.",
+    "AND Media Solutions delivers international media planning, OOH, DOOH, in-flight, and transit advertising across borders. Premium global brand strategy from Dubai to the world.",
   keywords: [
     "media strategy",
     "global advertising",
     "DOOH",
     "OOH",
     "in-flight advertising",
-    "taxi advertising",
+    "transit advertising",
     "Dubai media agency",
     "international media planning",
     "brand strategy",

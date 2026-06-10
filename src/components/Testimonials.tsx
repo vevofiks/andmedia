@@ -12,7 +12,7 @@ const testimonials = [
     name: "Ashraf Hassan",
     title: "Head of Brand & Growth",
     brand: "FiLLi Cafe",
-    description: "Working with AND Media Solutions on our Dubai Taxi digital screen campaign was a very positive experience for FiLLi Cafe. The campaign delivered a strong response and helped create meaningful emotional recall. From the creative execution to setting up the right CTA, their team was professional and proactive. They helped us understand the MROI, test different approaches, and refine the campaign to achieve the best possible results.",
+    description: "Working with AND Media Solutions on our Dubai Transit digital screen campaign was a very positive experience for FiLLi Cafe. The campaign delivered a strong response and helped create meaningful emotional recall. From the creative execution to setting up the right CTA, their team was professional and proactive. They helped us understand the MROI, test different approaches, and refine the campaign to achieve the best possible results.",
     accentColor: "#12B5B0", // Teal
   },
   {
@@ -20,7 +20,7 @@ const testimonials = [
     name: "Anuraj Nair",
     title: "Head – Brand Marketing",
     brand: "R&B",
-    description: "We partnered with AND Media to integrate the in-taxi screens into our seasonal launch strategy. The ability to deploy full-motion video within a captive and immersive environment significantly boosted engagement. The synergy of geographic precision and long dwell time allowed us to connect with customers at the right place and time. The campaign delivered on our primary goals of brand reach and app acquisitions.",
+    description: "We partnered with AND Media to integrate the in-transit screens into our seasonal launch strategy. The ability to deploy full-motion video within a captive and immersive environment significantly boosted engagement. The synergy of geographic precision and long dwell time allowed us to connect with customers at the right place and time. The campaign delivered on our primary goals of brand reach and app acquisitions.",
     accentColor: "#1CA7C6", // Cyan
   }
 ];
