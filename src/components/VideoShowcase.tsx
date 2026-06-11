@@ -24,20 +24,6 @@ interface Campaign {
 
 const campaigns: Campaign[] = [
   {
-    id: "joyalukkas",
-    brand: "Joyalukkas",
-    sector: "Luxury Retail",
-    title: "Teal & Gold Luxury DOOH",
-    description: "High-impact digital screen rollout targeting affluent shoppers during peak festive seasons across high-traffic Dubai corridors.",
-    youtubeId: "8S_Uf3DCSxc",
-    stats: [
-      { label: "CTR", value: "7.2%" },
-      { label: "Impressions", value: "2.4M+" },
-      { label: "Recall", value: "High" }
-    ],
-    accentColor: "#F2D400", // Gold/Yellow
-  },
-  {
     id: "fillicafe",
     brand: "FiLLi Cafe",
     sector: "Food & Beverage",
@@ -64,6 +50,20 @@ const campaigns: Campaign[] = [
       { label: "Reach", value: "1.8M+" }
     ],
     accentColor: "#1CA7C6", // Cyan
+  },
+  {
+    id: "joyalukkas",
+    brand: "Joyalukkas",
+    sector: "Luxury Retail",
+    title: "Teal & Gold Luxury DOOH",
+    description: "High-impact digital screen rollout targeting affluent shoppers during peak festive seasons across high-traffic Dubai corridors.",
+    youtubeId: "8S_Uf3DCSxc",
+    stats: [
+      { label: "CTR", value: "7.2%" },
+      { label: "Impressions", value: "2.4M+" },
+      { label: "Recall", value: "High" }
+    ],
+    accentColor: "#F2D400", // Gold/Yellow
   }
 ];
 
