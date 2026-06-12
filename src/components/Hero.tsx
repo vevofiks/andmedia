@@ -158,16 +158,16 @@ export default function Hero() {
             </div>
 
             {/* Pristine metric counters (Removed raw numbers/percentages for verified compliance) */}
-            <div ref={statsRef} className="grid grid-cols-3 gap-6 border-t border-white/5 pt-8 mt-4 opacity-0 max-w-sm">
-              <div>
+            <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-white/5 pt-8 mt-4 opacity-0 max-w-sm">
+              <div className="flex flex-col sm:block">
                 <span className="block text-xl font-bold text-white leading-none tracking-tight">GLOBAL</span>
                 <span className="block text-[8.5px] text-white/40 font-bold uppercase tracking-wider mt-1.5 leading-none">Media Reach</span>
               </div>
-              <div>
+              <div className="flex flex-col sm:block">
                 <span className="block text-xl font-bold text-[#1CA7C6] leading-none tracking-tight">VERIFIED</span>
                 <span className="block text-[8.5px] text-white/40 font-bold uppercase tracking-wider mt-1.5 leading-none">Target Precision</span>
               </div>
-              <div>
+              <div className="flex flex-col sm:block">
                 <span className="block text-xl font-bold text-[#F2D400] leading-none tracking-tight">REAL-TIME</span>
                 <span className="block text-[8.5px] text-white/40 font-bold uppercase tracking-wider mt-1.5 leading-none">Campaign Sync</span>
               </div>
@@ -180,7 +180,7 @@ export default function Hero() {
             
             <div
               ref={dashboardRef}
-              className="w-full max-w-[580px] bg-white/[0.02] border border-white/5 rounded-3xl p-8 shadow-[0_30px_90px_rgba(0,0,0,0.4)] backdrop-blur-sm opacity-0 flex flex-col justify-between"
+              className="w-full max-w-[580px] bg-white/[0.02] border border-white/5 rounded-3xl p-6 sm:p-8 shadow-[0_30px_90px_rgba(0,0,0,0.4)] backdrop-blur-sm opacity-0 flex flex-col justify-between"
             >
               {/* Dashboard Header */}
               <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-6">
@@ -198,7 +198,7 @@ export default function Hero() {
               <div className="flex flex-col gap-4 mb-6">
                 <span className="text-[8px] font-mono text-white/30 uppercase tracking-widest">Active Dispatch Pipelines</span>
                 
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4 flex flex-col">
                     <span className="text-[8px] text-white/40 font-mono uppercase">OOH Coverage</span>
                     <span className="text-lg font-black text-white mt-1 leading-none">EXTENSIVE</span>

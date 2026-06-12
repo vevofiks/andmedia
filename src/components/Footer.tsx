@@ -75,11 +75,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2.5 mb-6">
               <Image 
-                src="/images/logo.png" 
+                src="/images/logo-simple.png" 
                 alt="AND Media Solutions" 
-                width={120} 
-                height={60} 
-                className="h-12 w-auto object-contain"
+                width={61} 
+                height={44} 
+                className="h-11 w-auto object-contain"
               />
             </a>
             <p className="text-white/40 text-[15px] leading-relaxed max-w-sm mb-8 font-light font-body">

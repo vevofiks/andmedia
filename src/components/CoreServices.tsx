@@ -174,22 +174,22 @@ export default function CoreServices() {
                 </div>
 
                 {/* Bottom content block */}
-                <div className="flex flex-col gap-3 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="flex flex-col gap-3 translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 transition-transform duration-500">
                   {service.subtitle && (
-                    <span className="text-[11px] font-extrabold tracking-wider uppercase opacity-45 group-hover:opacity-80 transition-opacity duration-300" style={{ color: service.accentColor }}>
+                    <span className="text-[11px] font-extrabold tracking-wider uppercase opacity-80 lg:opacity-45 lg:group-hover:opacity-80 transition-opacity duration-300" style={{ color: service.accentColor }}>
                       {service.subtitle}
                     </span>
                   )}
                   <h3 className="text-2xl font-black text-white leading-tight whitespace-pre-line tracking-tight text-shadow-md">
                     {service.title}
                   </h3>
-                  <p className="text-white/85 text-[13.5px] leading-relaxed font-light max-h-0 overflow-hidden group-hover:max-h-32 transition-all duration-500 ease-out">
+                  <p className="text-white/85 text-[13.5px] leading-relaxed font-light max-h-32 lg:max-h-0 overflow-hidden lg:group-hover:max-h-32 transition-all duration-500 ease-out">
                     {service.description}
                   </p>
                   <a
                     href="#cta"
                     onClick={handleContactClick}
-                    className="inline-flex items-center gap-2 text-[12.5px] font-bold transition-all duration-300 mt-1 opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0"
+                    className="inline-flex items-center gap-2 text-[12.5px] font-bold transition-all duration-300 mt-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 translate-y-0 lg:-translate-y-2 lg:group-hover:translate-y-0"
                     style={{ color: service.accentColor }}
                   >
                     {service.link}

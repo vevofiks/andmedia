@@ -195,18 +195,18 @@ export default function TechServices() {
         <div ref={contentRef} className="grid lg:grid-cols-12 gap-10 items-stretch opacity-0">
           
           {/* LEFT SIDEBAR: Horizontal Tab Controls (5 columns) */}
-          <div className="lg:col-span-4 flex flex-col gap-3">
-            <span className="text-[10px] font-extrabold text-white/30 uppercase tracking-[0.2em] mb-2 px-1">
+          <div className="lg:col-span-4 flex flex-col gap-3 w-full overflow-hidden">
+            <span className="text-[10px] font-extrabold text-white/30 uppercase tracking-[0.2em] mb-1 lg:mb-2 px-1">
               Select Capability
             </span>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-row overflow-x-auto lg:flex-col gap-3 pb-4 lg:pb-0 scrollbar-none snap-x snap-mandatory w-full">
               {divisions.map((div, idx) => (
                 <button
                   key={div.id}
                   onClick={() => handleTabChange(idx)}
-                  className={`w-full flex items-center justify-between text-left p-5 rounded-2xl border transition-all duration-300 relative group cursor-pointer ${
+                  className={`flex-shrink-0 w-[270px] sm:w-[290px] lg:w-full flex items-center justify-between text-left p-4 sm:p-5 rounded-2xl border transition-all duration-300 relative group cursor-pointer snap-start ${
                     activeTab === idx
-                      ? "bg-white/5 border-white/10 shadow-lg translate-x-1"
+                      ? "bg-white/5 border-white/10 shadow-lg lg:translate-x-1"
                       : "bg-transparent border-white/5 hover:bg-white/[0.02] hover:border-white/10"
                   }`}
                 >
@@ -221,10 +221,10 @@ export default function TechServices() {
                       }}
                     />
                     <div className="flex flex-col">
-                      <span className="text-[16px] font-extrabold tracking-tight font-sans text-white">
+                      <span className="text-[15px] sm:text-[16px] font-extrabold tracking-tight font-sans text-white">
                         {div.name}
                       </span>
-                      <span className="text-[10.5px] text-white/40 font-light mt-0.5 leading-none">
+                      <span className="text-[10px] sm:text-[10.5px] text-white/40 font-light mt-0.5 leading-none">
                         {div.services.length} services active
                       </span>
                     </div>
@@ -246,54 +246,54 @@ export default function TechServices() {
               ))}
             </div>
           </div>
-
+ 
           {/* RIGHT VIEWPORT: Tab Presentation Console (8 columns) */}
-          <div className="lg:col-span-8 bg-white/[0.03] border border-white/5 rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden min-h-[520px]">
+          <div className="lg:col-span-8 bg-white/[0.03] border border-white/5 rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative overflow-hidden min-h-[460px] sm:min-h-[520px]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(28,167,198,0.06)_0%,transparent_70%)] pointer-events-none" />
-
+ 
             {/* TAB CONTENT PANEL */}
-            <div className="tab-content-panel flex flex-col gap-8 h-full justify-between">
+            <div className="tab-content-panel flex flex-col gap-6 sm:gap-8 h-full justify-between">
               
               {/* Header and Details */}
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-4 sm:gap-5">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <span 
-                      className="text-[10.5px] font-extrabold tracking-[0.2em] uppercase font-mono"
+                      className="text-[9.5px] sm:text-[10.5px] font-extrabold tracking-[0.2em] uppercase font-mono"
                       style={{ color: divisions[activeTab].color }}
                     >
                       {divisions[activeTab].subtitle}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-1.5 font-sans leading-none">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mt-1 font-sans leading-tight">
                       {divisions[activeTab].name}
                     </h3>
                   </div>
-
+ 
                   {/* SVG Division Icon */}
                   <div 
-                    className="w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 shrink-0"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center border transition-all duration-300 shrink-0"
                     style={{ 
                       borderColor: `${divisions[activeTab].color}25`,
                       backgroundColor: `${divisions[activeTab].color}08`,
                       color: divisions[activeTab].color
                     }}
                   >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                       <path strokeLinecap="round" strokeLinejoin="round" d={divisions[activeTab].iconPath} />
                     </svg>
                   </div>
                 </div>
-
-                <p className="text-white/60 text-[14.5px] sm:text-[15.5px] font-light leading-relaxed max-w-2xl font-body">
+ 
+                <p className="text-white/60 text-[13.5px] sm:text-[15.5px] font-light leading-relaxed max-w-2xl font-body">
                   {divisions[activeTab].description}
                 </p>
-
+ 
                 {/* Interactive Services Bullets Container */}
-                <div className="flex flex-wrap gap-2.5 mt-2">
+                <div className="flex flex-wrap gap-2 mt-1">
                   {divisions[activeTab].services.map((srv, i) => (
                     <span
                       key={srv}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-[12px] font-semibold bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/8 transition-all duration-300"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[11px] sm:text-[12px] font-semibold bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/8 transition-all duration-300"
                     >
                       <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: divisions[activeTab].color }} />
                       {srv}

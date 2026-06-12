@@ -57,9 +57,9 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5 group">
           <Image 
-            src="/images/logo.png" 
+            src="/images/logo-full.png" 
             alt="AND Media Solutions" 
-            width={120} 
+            width={175} 
             height={50} 
             className="w-auto h-9 object-contain transition-all duration-300"
             priority

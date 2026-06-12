@@ -81,7 +81,7 @@ export default function ServicesGrid() {
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 w-full z-10">
         
         {/* Main Header */}
-        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-brand-dark/10 pb-10 mb-24 opacity-0">
+        <div ref={headerRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-brand-dark/10 pb-10 mb-16 lg:mb-24 opacity-0">
           <div>
             <span className="text-[11px] font-extrabold text-[#12B5B0] tracking-[0.3em] uppercase">SYSTEM SOLUTIONS</span>
             <h2 className="text-3xl sm:text-4xl lg:text-[52px] font-black text-brand-dark tracking-tight leading-none mt-2 font-sans">
@@ -98,7 +98,7 @@ export default function ServicesGrid() {
             ==================================================== */}
         <div
           ref={(el) => { if (el) rowRefs.current[0] = el; }}
-          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-36"
+          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-20 lg:mb-36"
         >
           {/* Left copy */}
           <div
@@ -158,7 +158,7 @@ export default function ServicesGrid() {
             ==================================================== */}
         <div
           ref={(el) => { if (el) rowRefs.current[1] = el; }}
-          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-36"
+          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-20 lg:mb-36"
         >
           {/* Right visual (placed first on left column on desktop) */}
           <div
@@ -218,7 +218,7 @@ export default function ServicesGrid() {
             ==================================================== */}
         <div
           ref={(el) => { if (el) rowRefs.current[2] = el; }}
-          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-36"
+          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-20 lg:mb-36"
         >
           {/* Left copy */}
           <div
@@ -277,7 +277,7 @@ export default function ServicesGrid() {
             ==================================================== */}
         <div
           ref={(el) => { if (el) rowRefs.current[3] = el; }}
-          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-36"
+          className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center mb-20 lg:mb-36"
         >
           {/* Right visual (placed first on desktop) */}
           <div

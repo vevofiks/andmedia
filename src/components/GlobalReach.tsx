@@ -92,45 +92,48 @@ export default function GlobalReach() {
               </span>
             </div>
 
-            {/* Map Frame */}
-            <div className="relative w-full aspect-[2/1] min-h-[300px] rounded-2xl overflow-hidden">
+            {/* Map Frame Wrapper for mobile horizontal swiping */}
+            <div className="w-full overflow-x-auto scrollbar-none snap-x snap-mandatory">
+              {/* Map Frame */}
+              <div className="relative w-[600px] sm:w-full aspect-[2/1] rounded-2xl overflow-hidden snap-start">
 
-              {/* Realistic Earth at night satellite photograph */}
-              <Image
-                src="/images/earth-night-satellite.png"
-                alt="Earth at night from space showing global city lights across Europe, Middle East, Asia"
-                fill
-                className="object-cover object-center scale-110"
-                sizes="(max-width: 1024px) 100vw, 66vw"
-                priority
-              />
+                {/* Realistic Earth at night satellite photograph */}
+                <Image
+                  src="/images/earth-night-satellite.png"
+                  alt="Earth at night from space showing global city lights across Europe, Middle East, Asia"
+                  fill
+                  className="object-cover object-center scale-110"
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  priority
+                />
 
-              {/* Edge vignettes to blend with dark panel */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0D111A]/60 via-transparent to-[#0D111A]/30 pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-l from-[#0D111A]/40 via-transparent to-[#0D111A]/40 pointer-events-none" />
+                {/* Edge vignettes to blend with dark panel */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0D111A]/60 via-transparent to-[#0D111A]/30 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-l from-[#0D111A]/40 via-transparent to-[#0D111A]/40 pointer-events-none" />
 
-              {/* Geographic HUD Node Pins overlaid on image */}
-              {connectionPoints.map((pt, i) => (
-                <div
-                  key={i}
-                  className="absolute transform -translate-x-1/2 -translate-y-1/2 group cursor-pointer"
-                  style={{ left: `${pt.x / 10}%`, top: `${pt.y / 5}%` }}
-                >
-                  <div className="relative">
-                    {/* Glowing Pulse Ring */}
-                    <span className={`absolute inset-0 w-4 h-4 -left-1 -top-1 rounded-full bg-${pt.primary ? "yellow" : "teal"}/30 animate-ping`} style={{ animationDuration: pt.primary ? "2s" : "3.5s" }} />
-                    {/* Node Core */}
-                    <div className={`w-2 h-2 rounded-full bg-brand-${pt.primary ? "yellow" : "teal"} shadow-[0_0_12px_rgba(242,212,0,0.8)]`} />
+                {/* Geographic HUD Node Pins overlaid on image */}
+                {connectionPoints.map((pt, i) => (
+                  <div
+                    key={i}
+                    className="absolute transform -translate-x-1/2 -translate-y-1/2 group cursor-pointer"
+                    style={{ left: `${pt.x / 10}%`, top: `${pt.y / 5}%` }}
+                  >
+                    <div className="relative">
+                      {/* Glowing Pulse Ring */}
+                      <span className={`absolute inset-0 w-4 h-4 -left-1 -top-1 rounded-full bg-${pt.primary ? "yellow" : "teal"}/30 animate-ping`} style={{ animationDuration: pt.primary ? "2s" : "3.5s" }} />
+                      {/* Node Core */}
+                      <div className={`w-2 h-2 rounded-full bg-brand-${pt.primary ? "yellow" : "teal"} shadow-[0_0_12px_rgba(242,212,0,0.8)]`} />
+                    </div>
+
+                    {/* Floating Coordinates Tag */}
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#090C15]/90 border border-white/10 px-2 py-1 rounded text-[8px] font-mono whitespace-nowrap opacity-20 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                      <span className="block font-bold text-white leading-none">{pt.name}</span>
+                      <span className="block text-[#12B5B0] mt-0.5 leading-none">{pt.lat} | {pt.lon}</span>
+                    </div>
                   </div>
+                ))}
 
-                  {/* Floating Coordinates Tag */}
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#090C15]/90 border border-white/10 px-2 py-1 rounded text-[8px] font-mono whitespace-nowrap opacity-20 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <span className="block font-bold text-white leading-none">{pt.name}</span>
-                    <span className="block text-[#12B5B0] mt-0.5 leading-none">{pt.lat} | {pt.lon}</span>
-                  </div>
-                </div>
-              ))}
-
+              </div>
             </div>
           </div>
 
