@@ -21,7 +21,6 @@ interface MappingService {
   accentColor: string;
   accentGrad: string;
   offers: MappingOffer[];
-  benefits: string[];
 }
 
 const mappingServicesData: MappingService[] = [
@@ -50,9 +49,6 @@ const mappingServicesData: MappingService[] = [
         title: "Wall Maps & Prints",
         description: "High-quality, large-scale prints for sales centers and offices."
       }
-    ],
-    benefits: [
-      "Visitors and guests can find what they need more quickly and with less frustration"
     ]
   },
   {
@@ -84,9 +80,6 @@ const mappingServicesData: MappingService[] = [
         title: "Presentation Interface",
         description: "Clean visual maps optimized for pitches and investor briefings."
       }
-    ],
-    benefits: [
-      "You can answer 'where is it?' and 'what's around it?' in seconds, not slides"
     ]
   }
 ];
@@ -275,30 +268,6 @@ export default function MapServices() {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Why It Matters */}
-              <div>
-                <h4 className="text-[13px] font-bold text-white/40 uppercase tracking-[0.15em] mb-3">
-                  Why It Matters
-                </h4>
-                <ul className="space-y-2.5">
-                  {activeService.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-[13.5px] text-white/70 font-light">
-                      <svg
-                        className="w-4 h-4 mt-0.5 shrink-0"
-                        style={{ color: activeService.accentColor }}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
 
