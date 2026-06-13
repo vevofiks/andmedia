@@ -21,8 +21,8 @@ const footerLinkCategories: FooterLinkCategory[] = [
       { label: "OOH & DOOH", href: "#core-services" },
       { label: "In-Flight Ads", href: "#core-services" },
       { label: "Transit Advertising", href: "#core-services" },
-      { label: "Global Expansion", href: "#core-services" },
-      { label: "Airport Ads", href: "#core-services" },
+      { label: "Location Intelligence", href: "#map-services" },
+      { label: "Real Estate Mapping", href: "#map-services" },
     ],
   },
   {
