@@ -18,8 +18,6 @@ interface MappingService {
   title: string;
   subtitle: string;
   overview: string;
-  url: string;
-  buttonLabel: string;
   accentColor: string;
   accentGrad: string;
   offers: MappingOffer[];
@@ -29,76 +27,66 @@ interface MappingService {
 const mappingServicesData: MappingService[] = [
   {
     id: "custom-mapping",
-    tag: "EASYMAP.AE",
-    title: "Location Intelligence & Custom Mapping Solutions",
-    subtitle: "Turn complex spaces into clear, intuitive visual journeys.",
-    overview: "Location Intelligence & Custom Mapping Solutions help destinations, venues, and developments make their spaces easy to understand at a glance. We design tailored 2D and 3D maps that combine accurate layout, key landmarks, and clear wayfinding into one coherent visual system. From shopping centres and luxury resorts to tourist attractions, real estate projects, and stadiums, our custom maps are built to improve orientation, enhance visitor experience, and support clearer communication.",
-    url: "https://easymap.ae",
-    buttonLabel: "Visit EasyMap.ae",
+    tag: "WAYFINDING SOLUTIONS",
+    title: "Location Intelligence & Custom Mapping",
+    subtitle: "Clear, intuitive visual journeys.",
+    overview: "We design tailored 2D and 3D maps combining layouts, landmarks, and wayfinding. Ideal for resorts, malls, developments, and stadiums to improve visitor orientation and spatial experience.",
     accentColor: "#12B5B0", // Teal
     accentGrad: "from-[#12B5B0] to-[#1CA7C6]",
     offers: [
       {
-        title: "Custom 2D and 3D Maps",
-        description: "Bespoke cartographic maps for malls, resorts, tourist spots, real estate developments, campuses, and event venues. Every map is designed around your actual layout, branding, and visitor needs."
+        title: "Custom 2D & 3D Maps",
+        description: "Bespoke layouts tailored to your branding and visitor flow."
       },
       {
-        title: "Location Intelligence & Structure",
-        description: "We analyse how people move through your space and translate that into maps that highlight entrances, exits, key routes, zones, and points of interest. The result is a visual tool that makes your environment understandable to first-time visitors and regular users alike."
+        title: "Location Intelligence",
+        description: "Analyzed routes highlighting entrances, key paths, and interest points."
       },
       {
-        title: "Interactive Mapping Experiences",
-        description: "Digital maps that work on websites, kiosks, and displays, featuring interactive markers, layered information, and pop-ups. Ideal for destinations that want to help users explore in depth, not just find a single point."
+        title: "Interactive Mapping",
+        description: "Digital web maps with custom popups, layered info, and markers."
       },
       {
-        title: "Wall Maps and Presentation Assets",
-        description: "High-quality wall maps and large-format prints for offices, visitor centres, sales galleries, and homes. These pieces work as both functional tools and design elements, supporting presentations, tours, and day-to-day orientation."
+        title: "Wall Maps & Prints",
+        description: "High-quality, large-scale prints for sales centers and offices."
       }
     ],
     benefits: [
-      "Visitors and guests can find what they need more quickly and with less frustration",
-      "Teams responsible for operations, sales, and guest services gain a shared visual reference of the space",
-      "Stakeholders can discuss layout, extensions, and improvements using a common, accurate map",
-      "Your destination or development gains a distinctive visual identity tied to its real-world geography"
+      "Visitors and guests can find what they need more quickly and with less frustration"
     ]
   },
   {
     id: "real-estate-platform",
-    tag: "EMRE.EASYMAP.AE",
-    title: "Real Estate Media Intelligence & Mapping Platform",
-    subtitle: "See developers, projects, infrastructure, and future communities through one connected map.",
-    overview: "The Real Estate Media Intelligence & Mapping Platform is built for brokers, agencies, and developers who need a single, clear view of a fast-moving property market. It brings together developers, projects, transport links, and emerging communities into one interactive mapping environment. Instead of jumping between static brochures, PDFs, and separate data sources, you work within a single visual platform that shows what exists today and what is coming next.",
-    url: "https://emre.easymap.ae",
-    buttonLabel: "Explore EMRE Platform",
+    tag: "INTELLIGENCE PLATFORM",
+    title: "Real Estate Media Intelligence",
+    subtitle: "Developers, projects, and infrastructure on one map.",
+    overview: "A live mapping dashboard built for brokers and developers. It consolidates properties, developer pipelines, infrastructure, transit routes, and emerging communities into a single interactive view.",
     accentColor: "#1CA7C6", // Cyan
     accentGrad: "from-[#1CA7C6] to-[#12B5B0]",
     offers: [
       {
-        title: "Developer and Project Mapping",
-        description: "A mapped view of key developers and their active projects, with the ability to explore locations, surrounding communities, and nearby landmarks. Brokers and agencies can quickly show clients where each project sits and how it relates to the wider city."
+        title: "Developer & Project Mapping",
+        description: "Interactive view of active projects and community surroundings."
       },
       {
-        title: "Infrastructure and Connectivity Insight",
-        description: "Layers for metro lines, rail routes, major roads, and upcoming infrastructure that will influence accessibility and long-term value. This makes it easier to explain how a project is connected now and how that connectivity will evolve."
+        title: "Infrastructure Insight",
+        description: "Dynamic transit layers for roads, metro lines, and rail expansions."
       },
       {
-        title: "Emerging Communities and New Destinations",
-        description: "Visibility of developing residential and mixed-use areas before they become fully established. This helps professionals identify opportunity zones earlier and understand how the urban fabric is expanding."
+        title: "Emerging Communities",
+        description: "Pre-construction insights into upcoming development zones."
       },
       {
-        title: "Configurable, Client-Ready Views",
-        description: "The platform can be configured for different user types, from individual brokers to agencies and developers. Branded views and customised layers allow you to present information in a way that matches your own identity and priorities."
+        title: "Configurable Views",
+        description: "Branded client-ready map layers for agencies and brokers."
       },
       {
-        title: "Presentation-Friendly Interface",
-        description: "A clean, interactive map interface suitable for client meetings, investor presentations, and internal strategy sessions. Complex information becomes easier to explain when it is grounded in a clear visual context."
+        title: "Presentation Interface",
+        description: "Clean visual maps optimized for pitches and investor briefings."
       }
     ],
     benefits: [
-      "You can answer 'where is it?' and 'what's around it?' in seconds, not slides",
-      "Teams work from a single, consistent representation of the market instead of fragmented sources",
-      "Clients and investors understand projects, communities, and future plans more quickly",
-      "Decisions about focus areas and priorities can be made with a better grasp of the city's real structure and direction"
+      "You can answer 'where is it?' and 'what's around it?' in seconds, not slides"
     ]
   }
 ];
@@ -316,17 +304,9 @@ export default function MapServices() {
 
             {/* CTA Buttons */}
             <div className="pt-4 border-t border-white/5 flex flex-wrap items-center gap-4">
-              <a
-                href={activeService.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-brand-teal text-white text-[13px] font-extrabold tracking-wider uppercase rounded-full hover:bg-brand-cyan transition-all duration-300 hover:shadow-[0_8px_25px_rgba(18,181,176,0.3)] hover:-translate-y-0.5 font-sans"
-              >
-                {activeService.buttonLabel} ↗
-              </a>
               <button
                 onClick={() => window.dispatchEvent(new CustomEvent("open-consult-modal"))}
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-white/10 hover:border-white/20 bg-white/5 hover:bg-white/10 text-white text-[13px] font-extrabold tracking-wider uppercase rounded-full transition-all duration-300 font-sans cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-brand-teal text-white text-[13px] font-extrabold tracking-wider uppercase rounded-full hover:bg-brand-cyan transition-all duration-300 hover:shadow-[0_8px_25px_rgba(18,181,176,0.3)] hover:-translate-y-0.5 font-sans cursor-pointer"
               >
                 Schedule Consultation
               </button>
