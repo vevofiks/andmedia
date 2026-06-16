@@ -79,7 +79,7 @@ export default function Footer() {
                 alt="AND Media Solutions" 
                 width={225} 
                 height={100} 
-                className="h-16 w-auto object-contain"
+                className="h-24 w-auto object-contain"
               />
             </a>
             <p className="text-white/40 text-[15px] leading-relaxed max-w-sm mb-8 font-light font-body">
