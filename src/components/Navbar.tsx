@@ -56,13 +56,15 @@ export default function Navbar() {
         className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full flex items-center justify-between"
       >
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2.5 group">
+        <a href="#" className="relative w-56 h-10 flex items-center group">
           <Image 
-            src="/lgo.png" 
+            src="/logo-removebg.png" 
             alt="AND Media Solutions" 
-            width={185} 
-            height={90} 
-            className="w-auto h-9 object-contain transition-all duration-300"
+            width={225} 
+            height={100} 
+            className={`absolute left-0 top-1/2 -translate-y-1/2 w-auto object-contain transition-all duration-300 origin-left ${
+              scrolled ? "h-16" : "h-24"
+            }`}
             priority
           />
         </a>
