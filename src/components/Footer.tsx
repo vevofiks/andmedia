@@ -73,13 +73,13 @@ export default function Footer() {
         <div className="grid lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <a href="#" className="flex items-center gap-2.5 mb-6">
+            <a href="#" className="flex items-center mb-6">
               <Image 
-                src="/images/logo-simple.png" 
+                src="/finalizedlogotransperent.png" 
                 alt="AND Media Solutions" 
-                width={61} 
-                height={44} 
-                className="h-11 w-auto object-contain"
+                width={225} 
+                height={100} 
+                className="h-16 w-auto object-contain"
               />
             </a>
             <p className="text-white/40 text-[15px] leading-relaxed max-w-sm mb-8 font-light font-body">

@@ -58,7 +58,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="relative w-56 h-10 flex items-center group">
           <Image 
-            src="/logo-removebg.png" 
+            src="/finalizedlogotransperent.png" 
             alt="AND Media Solutions" 
             width={225} 
             height={100} 
