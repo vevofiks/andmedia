@@ -58,7 +58,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center">
           <Image 
-            src="/logo-optimized.png" 
+            src="/AND%20mediawithoutllc.png" 
             alt="AND Media Solutions" 
             width={1200} 
             height={184} 
