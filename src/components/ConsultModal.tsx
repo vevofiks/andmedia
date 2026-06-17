@@ -82,7 +82,7 @@ export default function ConsultModal() {
     );
 
     // Redirect to user's mail client
-    window.location.href = `mailto:andmedia057@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:connect@andmedia.me?subject=${subject}&body=${body}`;
 
     // Show visual success state
     gsap.to(".consult-form-inner", {
@@ -251,10 +251,10 @@ export default function ConsultModal() {
           <p className="text-[11.5px] text-white/40 font-body">
             Or email us directly at:{" "}
             <a
-              href="mailto:andmedia057@gmail.com?subject=Strategy%20Consultation%20Request"
+              href="mailto:connect@andmedia.me?subject=Strategy%20Consultation%20Request"
               className="text-[#12B5B0] hover:underline font-semibold"
             >
-              andmedia057@gmail.com
+              connect@andmedia.me
             </a>
           </p>
           <p className="text-[9.5px] text-white/20 font-mono tracking-wider mt-4">

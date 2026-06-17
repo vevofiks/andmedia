@@ -8,15 +8,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const brands = [
-  { name: "Home Box", src: "/clients/Home Box.png", imgClass: "h-[32px] md:h-[40px]" },
-  { name: "Joy Alukkas", src: "/clients/Joy Alukkas.webp", imgClass: "h-[32px] md:h-[40px]" },
-  { name: "Marmum", src: "/clients/Marmum-Logo.webp", imgClass: "h-[36px] md:h-[44px]" },
-  { name: "Saudi Tourism", src: "/clients/sauditourism.png", imgClass: "h-[36px] md:h-[48px]" },
-  { name: "Abu Dhabi Tourism", src: "/clients/Abu-Dhabi.png", imgClass: "h-[36px] md:h-[48px]" },
-  { name: "Dubai Tourism", src: "/clients/dubai.png", imgClass: "h-[56px] md:h-[72px]" }, // Increased size
-  { name: "Emirates", src: "/clients/pngegg.png", imgClass: "h-[36px] md:h-[44px]" },
-  { name: "Neom", src: "/clients/neom.png", imgClass: "h-[56px] md:h-[68px]" }, // Increased size
-  { name: "R&B", src: "/clients/rb.svg", imgClass: "h-[32px] md:h-[36px]" }
+  { name: "Home Box", src: "/clients/Home Box.png" },
+  { name: "Joy Alukkas", src: "/clients/Joy Alukkas.webp" },
+  { name: "Marmum", src: "/clients/Marmum-Logo.webp" },
+  { name: "Saudi Tourism", src: "/clients/sauditourism.png" },
+  { name: "Abu Dhabi Tourism", src: "/clients/Abu-Dhabi.png" },
+  { name: "Dubai Tourism", src: "/clients/dubai.png" },
+  { name: "Emirates", src: "/clients/pngegg.png" },
+  { name: "Neom", src: "/clients/neom.png" },
+  { name: "R&B", src: "/clients/rb.svg" }
 ];
 
 export default function TrustStrip() {
@@ -59,7 +59,7 @@ export default function TrustStrip() {
                 className="flex-shrink-0 px-8 md:px-14 flex items-center justify-center h-20 group cursor-pointer"
               >
                 {/* Clean, uniform floating image structure */}
-                <div className={`relative ${brand.imgClass} opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out transform flex items-center justify-center`}>
+                <div className="relative h-[32px] md:h-[42px] opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out transform flex items-center justify-center">
                   <Image
                     src={brand.src}
                     alt={brand.name}

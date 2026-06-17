@@ -75,7 +75,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center mb-6">
               <Image 
-                src="/logo-optimized.png" 
+                src="/AND%20mediawithoutllc.png" 
                 alt="AND Media Solutions" 
                 width={1200} 
                 height={184} 
@@ -131,14 +131,14 @@ export default function Footer() {
         {/* Contact Row (Redirects to Custom Form modal) */}
         <div className="flex flex-wrap items-center gap-6 py-8 border-t border-white/8 mb-8">
           <a 
-            href="mailto:andmedia057@gmail.com" 
+            href="mailto:connect@andmedia.me" 
             onClick={handleContactClick}
             className="flex items-center gap-2 text-white/40 hover:text-[#12B5B0] transition-colors text-[14px]"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
-            andmedia057@gmail.com
+            connect@andmedia.me
           </a>
           <span className="w-1 h-1 rounded-full bg-white/15" />
           <span className="flex items-center gap-2 text-white/40 text-[14px]">
