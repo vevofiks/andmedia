@@ -29,7 +29,7 @@ const mappingServicesData: MappingService[] = [
     tag: "WAYFINDING SOLUTIONS",
     title: "Location Intelligence & Custom Mapping",
     subtitle: "Clear, intuitive visual journeys.",
-    overview: "We design tailored 2D and 3D maps combining layouts, landmarks, and wayfinding. Ideal for resorts, malls, developments, and stadiums to improve visitor orientation and spatial experience.",
+    overview: "We design tailored 2D and 3D maps combining layouts, landmarks, and wayfinding. Ideal for resorts, malls, theme parks, and stadiums to improve visitor orientation and spatial experience.",
     accentColor: "#12B5B0", // Teal
     accentGrad: "from-[#12B5B0] to-[#1CA7C6]",
     offers: [
@@ -329,7 +329,7 @@ export default function MapServices() {
                       DEPLOYMENT MODEL: HIGH-FIDELITY 3D
                     </span>
                     <p className="text-white/60 text-[11.5px] leading-relaxed font-light font-body">
-                      Designed around your actual floorplan layout, branding guidelines, and visitor wayfinding requirements for malls, resorts, and stadiums.
+                      Designed around your actual floorplan layout, branding guidelines, and visitor wayfinding requirements for malls, resorts, theme parks, and stadiums.
                     </p>
                   </div>
                 </div>
@@ -352,7 +352,7 @@ export default function MapServices() {
                   {/* Platform Interface Display Frame */}
                   <div className="relative flex-1 min-h-[320px] rounded-2xl overflow-hidden border border-white/10 group shadow-2xl">
                     <Image
-                      src="/images/real-estate-platform.png"
+                      src="/images/real-estate-devices.jpg"
                       alt="EMRE Real Estate Media Intelligence Platform"
                       fill
                       className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-105"
