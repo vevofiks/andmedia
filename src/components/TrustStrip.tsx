@@ -8,15 +8,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const brands = [
-  { name: "Home Box", src: "/clients/Home Box.png" },
-  { name: "Joy Alukkas", src: "/clients/Joy Alukkas.webp" },
-  { name: "Marmum", src: "/clients/Marmum-Logo.webp" },
-  { name: "Saudi Tourism", src: "/clients/sauditourism.png" },
-  { name: "Abu Dhabi Tourism", src: "/clients/Abu-Dhabi.png" },
-  { name: "Dubai Tourism", src: "/clients/dubai.png" },
-  { name: "Emirates", src: "/clients/pngegg.png" },
-  { name: "Neom", src: "/clients/neom.png" },
-  { name: "R&B", src: "/clients/rb.svg" }
+  { name: "Home Box", src: "/clients/Home Box.png", vars: { "--h-desktop": "72px", "--h-mobile": "54px" } },
+  { name: "Joy Alukkas", src: "/clients/Joy Alukkas.webp", vars: { "--h-desktop": "35px", "--h-mobile": "27px" } },
+  { name: "Marmum", src: "/clients/Marmum-Logo.webp", vars: { "--h-desktop": "54px", "--h-mobile": "40px" } },
+  { name: "Saudi Tourism", src: "/clients/sauditourism.png", vars: { "--h-desktop": "44px", "--h-mobile": "32px" } },
+  { name: "Abu Dhabi Tourism", src: "/clients/Abu-Dhabi.png", vars: { "--h-desktop": "52px", "--h-mobile": "38px" } },
+  { name: "Dubai Tourism", src: "/clients/dubai.png", vars: { "--h-desktop": "64px", "--h-mobile": "48px" } },
+  { name: "Emirates", src: "/clients/pngegg.png", vars: { "--h-desktop": "64px", "--h-mobile": "48px" } },
+  { name: "Neom", src: "/clients/neom.png", vars: { "--h-desktop": "80px", "--h-mobile": "60px" } },
+  { name: "R&B", src: "/clients/rb.svg", vars: { "--h-desktop": "52px", "--h-mobile": "38px" } }
 ];
 
 export default function TrustStrip() {
@@ -56,10 +56,13 @@ export default function TrustStrip() {
             {[...brands, ...brands, ...brands, ...brands].map((brand, i) => (
               <div 
                 key={i} 
-                className="flex-shrink-0 px-8 md:px-14 flex items-center justify-center h-20 group cursor-pointer"
+                className="flex-shrink-0 px-8 md:px-14 flex items-center justify-center h-20 md:h-28 group cursor-pointer"
               >
                 {/* Clean, uniform floating image structure */}
-                <div className="relative h-[32px] md:h-[42px] opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out transform flex items-center justify-center">
+                <div 
+                  style={brand.vars as React.CSSProperties}
+                  className="relative h-[var(--h-mobile)] md:h-[var(--h-desktop)] opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out transform flex items-center justify-center"
+                >
                   <Image
                     src={brand.src}
                     alt={brand.name}
