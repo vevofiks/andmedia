@@ -55,7 +55,7 @@ const campaigns: Campaign[] = [
     id: "joyalukkas",
     brand: "Joyalukkas",
     sector: "Luxury Retail",
-    title: "Teal & Gold Luxury DOOH",
+    title: "Luxury Jewellery DOOH Showcase",
     description: "High-impact digital screen rollout targeting affluent shoppers during peak festive seasons across high-traffic Dubai corridors.",
     youtubeId: "8S_Uf3DCSxc",
     stats: [

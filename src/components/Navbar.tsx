@@ -16,6 +16,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +36,62 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!menuRef.current) return;
+
+    const links = menuRef.current.querySelectorAll("a");
+
+    if (mobileOpen) {
+      // 1. Kill any active animations to prevent overlap conflicts
+      gsap.killTweensOf(menuRef.current);
+      gsap.killTweensOf(links);
+
+      // 2. Set visible state before running animation
+      gsap.set(menuRef.current, { visibility: "visible" });
+
+      // 3. Smooth height and border color transition
+      gsap.to(menuRef.current, {
+        height: "auto",
+        opacity: 1,
+        borderBottomColor: "rgba(255, 255, 255, 0.1)",
+        borderTopColor: "rgba(255, 255, 255, 0.05)",
+        duration: 0.5,
+        ease: "power3.out",
+      });
+
+      // 4. Staggered fade and slide-in for links
+      gsap.fromTo(
+        links,
+        { opacity: 0, y: 12 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.05,
+          duration: 0.45,
+          ease: "power2.out",
+          delay: 0.05,
+        }
+      );
+    } else {
+      // 1. Kill active animations
+      gsap.killTweensOf(menuRef.current);
+      gsap.killTweensOf(links);
+
+      // 2. Animate close transition
+      gsap.to(menuRef.current, {
+        height: 0,
+        opacity: 0,
+        borderBottomColor: "rgba(255, 255, 255, 0)",
+        borderTopColor: "rgba(255, 255, 255, 0)",
+        duration: 0.4,
+        ease: "power3.inOut",
+        onComplete: () => {
+          gsap.set(menuRef.current, { visibility: "hidden" });
+        },
+      });
+    }
+  }, [mobileOpen]);
 
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -58,7 +115,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center">
           <Image 
-            src="/AND%20mediawithoutllc.png" 
+            src="/AND-mediawithoutllc.png" 
             alt="AND Media Solutions" 
             width={1200} 
             height={184} 
@@ -107,11 +164,11 @@ export default function Navbar() {
 
         {/* Mobile Dropdown */}
         <div
-          className={`absolute left-0 right-0 top-full bg-[#090C15]/95 backdrop-blur-lg border-b border-white/10 overflow-hidden transition-all duration-500 lg:hidden ${
-            mobileOpen ? "max-h-96 pb-6 pt-4 px-6 border-t border-white/5" : "max-h-0"
-          }`}
+          ref={menuRef}
+          className="absolute left-0 right-0 top-full bg-[#090C15]/95 backdrop-blur-lg overflow-hidden lg:hidden border-b border-t border-transparent"
+          style={{ height: 0, opacity: 0, visibility: "hidden" }}
         >
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 pb-6 pt-4 px-6">
             {navLinks.map((link) => (
               <a
                 key={link.label}

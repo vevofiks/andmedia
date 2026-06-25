@@ -1,6 +1,11 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface FooterLinkItem {
   label: string;
@@ -61,6 +66,30 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        footerRef.current?.querySelectorAll(".footer-fade-in") || [],
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.0,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: footerRef.current,
+            start: "top 92%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }, footerRef);
+
+    return () => ctx.revert();
+  }, []);
   
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -68,14 +97,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#070b12] text-white border-t border-white/[0.04] select-none">
+    <footer ref={footerRef} className="bg-[#070b12] text-white border-t border-white/[0.04] select-none">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-20 pb-8">
         <div className="grid lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 footer-fade-in opacity-0">
             <a href="#" className="flex items-center mb-6">
               <Image 
-                src="/AND%20mediawithoutllc.png" 
+                src="/AND-mediawithoutllc.png" 
                 alt="AND Media Solutions" 
                 width={1200} 
                 height={184} 
@@ -100,7 +129,7 @@ export default function Footer() {
 
           {/* Link Columns */}
           {footerLinkCategories.map((category) => (
-            <div key={category.title}>
+            <div key={category.title} className="footer-fade-in opacity-0">
               <h4 className="text-[13px] font-bold text-white/70 uppercase tracking-[0.15em] mb-6">{category.title}</h4>
               <ul className="space-y-3.5">
                 {category.links.map((link) => (
@@ -129,7 +158,7 @@ export default function Footer() {
         </div>
 
         {/* Contact Row (Redirects to Custom Form modal) */}
-        <div className="flex flex-wrap items-center gap-6 py-8 border-t border-white/8 mb-8">
+        <div className="flex flex-wrap items-center gap-6 py-8 border-t border-white/8 mb-8 footer-fade-in opacity-0">
           <a 
             href="mailto:connect@andmedia.me" 
             onClick={handleContactClick}
@@ -151,7 +180,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-white/5">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-white/5 footer-fade-in opacity-0">
           <p className="text-[13px] text-white/25 font-light">
             © {new Date().getFullYear()} AND Media Solutions. All rights reserved.
           </p>

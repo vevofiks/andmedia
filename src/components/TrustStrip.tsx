@@ -8,15 +8,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const brands = [
-  { name: "Home Box", src: "/clients/Home Box.png", vars: { "--h-desktop": "72px", "--h-mobile": "54px" } },
-  { name: "Joy Alukkas", src: "/clients/Joy Alukkas.webp", vars: { "--h-desktop": "35px", "--h-mobile": "27px" } },
-  { name: "Marmum", src: "/clients/Marmum-Logo.webp", vars: { "--h-desktop": "54px", "--h-mobile": "40px" } },
-  { name: "Saudi Tourism", src: "/clients/sauditourism.png", vars: { "--h-desktop": "44px", "--h-mobile": "32px" } },
-  { name: "Abu Dhabi Tourism", src: "/clients/Abu-Dhabi.png", vars: { "--h-desktop": "52px", "--h-mobile": "38px" } },
-  { name: "Dubai Tourism", src: "/clients/dubai.png", vars: { "--h-desktop": "64px", "--h-mobile": "48px" } },
-  { name: "Emirates", src: "/clients/pngegg.png", vars: { "--h-desktop": "64px", "--h-mobile": "48px" } },
-  { name: "Neom", src: "/clients/neom.png", vars: { "--h-desktop": "80px", "--h-mobile": "60px" } },
-  { name: "R&B", src: "/clients/rb.svg", vars: { "--h-desktop": "52px", "--h-mobile": "38px" } }
+  { name: "Home Box", src: "/clients/Home Box.png", hMobile: 28, hDesktop: 38 },
+  { name: "Joy Alukkas", src: "/clients/Joy Alukkas.webp", hMobile: 28, hDesktop: 36 },
+  { name: "Marmum", src: "/clients/Marmum-Logo.webp", hMobile: 34, hDesktop: 44 },
+  { name: "Saudi Tourism", src: "/clients/sauditourism.png", hMobile: 36, hDesktop: 48 },
+  { name: "Abu Dhabi Tourism", src: "/clients/Abu-Dhabi.png", hMobile: 36, hDesktop: 48 },
+  { name: "Dubai Tourism", src: "/clients/dubai.png", hMobile: 50, hDesktop: 68 },
+  { name: "Emirates", src: "/clients/pngegg.png", hMobile: 48, hDesktop: 64 },
+  { name: "Neom", src: "/clients/neom.png", hMobile: 60, hDesktop: 80 },
+  { name: "R&B", src: "/clients/rb.svg", hMobile: 26, hDesktop: 34 }
 ];
 
 export default function TrustStrip() {
@@ -60,7 +60,10 @@ export default function TrustStrip() {
               >
                 {/* Clean, uniform floating image structure */}
                 <div 
-                  style={brand.vars as React.CSSProperties}
+                  style={{
+                    "--h-mobile": `${brand.hMobile}px`,
+                    "--h-desktop": `${brand.hDesktop}px`
+                  } as React.CSSProperties}
                   className="relative h-[var(--h-mobile)] md:h-[var(--h-desktop)] opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out transform flex items-center justify-center"
                 >
                   <Image

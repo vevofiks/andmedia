@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -80,6 +80,7 @@ export default function CoreServices() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -100,7 +101,17 @@ export default function CoreServices() {
 
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    e.stopPropagation();
     window.dispatchEvent(new CustomEvent("open-consult-modal"));
+  };
+
+  const handleCardClick = (index: number, e: React.MouseEvent) => {
+    if (window.innerWidth < 1024) {
+      e.stopPropagation();
+      setActiveCard(activeCard === index ? null : index);
+    } else {
+      window.dispatchEvent(new CustomEvent("open-consult-modal"));
+    }
   };
 
   return (
@@ -129,79 +140,82 @@ export default function CoreServices() {
 
         {/* Cards Grid — 3 cols on desktop/large, 2 on tablet, 1 on mobile */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {coreServices.map((service, index) => (
-            <div
-              key={index}
-              ref={(el) => { if (el) cardsRef.current[index] = el; }}
-              className="group relative overflow-hidden rounded-3xl min-h-[380px] cursor-pointer opacity-0"
-              onClick={() => window.dispatchEvent(new CustomEvent("open-consult-modal"))}
-            >
-              {/* Full-bleed service image */}
-              <Image
-                src={service.image}
-                alt={service.title}
-                fill
-                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-
-              {/* Dark gradient overlay — extremely dark at bottom for perfect readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#03050c]/98 via-[#03050c]/75 to-[#03050c]/30 transition-opacity duration-500 group-hover:opacity-95" />
-
-              {/* Accent colour tint on hover */}
+          {coreServices.map((service, index) => {
+            const isExpanded = activeCard === index;
+            return (
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"
-                style={{ background: `radial-gradient(circle at bottom left, ${service.accentColor}, transparent 70%)` }}
-              />
+                key={index}
+                ref={(el) => { if (el) cardsRef.current[index] = el; }}
+                className="group relative overflow-hidden rounded-3xl min-h-[380px] cursor-pointer opacity-0"
+                onClick={(e) => handleCardClick(index, e)}
+              >
+                {/* Full-bleed service image */}
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
 
-              {/* Top accent bar */}
-              <div className={`absolute top-0 left-0 w-0 h-1 bg-gradient-to-r ${service.accentGrad} group-hover:w-full transition-all duration-700 ease-out`} />
+                {/* Dark gradient overlay — extremely dark at bottom for perfect readability */}
+                <div className={`absolute inset-0 bg-gradient-to-t from-[#03050c]/98 via-[#03050c]/75 to-[#03050c]/30 transition-opacity duration-500 ${isExpanded ? "opacity-95" : "group-hover:opacity-95"}`} />
 
-              {/* Card content */}
-              <div className="absolute inset-0 p-7 flex flex-col justify-between">
+                {/* Accent colour tint on hover */}
+                <div
+                  className={`absolute inset-0 opacity-0 transition-opacity duration-500 ${isExpanded ? "opacity-10" : "group-hover:opacity-10"}`}
+                  style={{ background: `radial-gradient(circle at bottom left, ${service.accentColor}, transparent 70%)` }}
+                />
 
-                {/* Top row: index number + tag */}
-                <div className="flex items-center justify-between">
-                  <span
-                    className="text-[9.5px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full border border-white/10 bg-black/35 backdrop-blur-sm"
-                    style={{ color: service.accentColor }}
-                  >
-                    {service.tag}
-                  </span>
-                  <span className="text-4xl font-black text-white/[0.07] group-hover:text-white/[0.13] transition-all duration-300 font-sans leading-none">
-                    {service.num}
-                  </span>
-                </div>
+                {/* Top accent bar */}
+                <div className={`absolute top-0 left-0 h-1 bg-gradient-to-r ${service.accentGrad} transition-all duration-700 ease-out ${isExpanded ? "w-full" : "w-0 group-hover:w-full"}`} />
 
-                {/* Bottom content block */}
-                <div className="flex flex-col gap-3 translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 transition-transform duration-500">
-                  {service.subtitle && (
-                    <span className="text-[11px] font-extrabold tracking-wider uppercase opacity-80 lg:opacity-45 lg:group-hover:opacity-80 transition-opacity duration-300" style={{ color: service.accentColor }}>
-                      {service.subtitle}
+                {/* Card content */}
+                <div className="absolute inset-0 p-7 flex flex-col justify-between">
+
+                  {/* Top row: index number + tag */}
+                  <div className="flex items-center justify-between">
+                    <span
+                      className="text-[9.5px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full border border-white/10 bg-black/35 backdrop-blur-sm"
+                      style={{ color: service.accentColor }}
+                    >
+                      {service.tag}
                     </span>
-                  )}
-                  <h3 className="text-2xl font-black text-white leading-tight whitespace-pre-line tracking-tight text-shadow-md">
-                    {service.title}
-                  </h3>
-                  <p className="text-white/85 text-[13.5px] leading-relaxed font-light max-h-32 lg:max-h-0 overflow-hidden lg:group-hover:max-h-32 transition-all duration-500 ease-out">
-                    {service.description}
-                  </p>
-                  <a
-                    href="#cta"
-                    onClick={handleContactClick}
-                    className="inline-flex items-center gap-2 text-[12.5px] font-bold transition-all duration-300 mt-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 translate-y-0 lg:-translate-y-2 lg:group-hover:translate-y-0"
-                    style={{ color: service.accentColor }}
-                  >
-                    {service.link}
-                    <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </a>
-                </div>
+                    <span className="text-4xl font-black text-white/[0.07] group-hover:text-white/[0.13] transition-all duration-300 font-sans leading-none">
+                      {service.num}
+                    </span>
+                  </div>
+
+                  {/* Bottom content block */}
+                  <div className="flex flex-col gap-3 translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 transition-transform duration-500">
+                    {service.subtitle && (
+                      <span className="text-[11px] font-extrabold tracking-wider uppercase opacity-80 lg:opacity-45 lg:group-hover:opacity-80 transition-opacity duration-300" style={{ color: service.accentColor }}>
+                        {service.subtitle}
+                      </span>
+                    )}
+                    <h3 className="text-2xl font-black text-white leading-tight whitespace-pre-line tracking-tight text-shadow-md">
+                      {service.title}
+                    </h3>
+                    <p className={`text-white/85 text-[13.5px] leading-relaxed font-light overflow-hidden transition-all duration-500 ease-out ${isExpanded ? "max-h-32 opacity-100 mt-1" : "max-h-0 lg:max-h-0 opacity-0 lg:opacity-0 lg:group-hover:max-h-32 lg:group-hover:opacity-100"}`}>
+                      {service.description}
+                    </p>
+                    <a
+                      href="#cta"
+                      onClick={handleContactClick}
+                      className={`inline-flex items-center gap-2 text-[12.5px] font-bold transition-all duration-300 mt-1 ${isExpanded ? "opacity-100 translate-y-0" : "opacity-0 pointer-events-none lg:pointer-events-auto lg:opacity-0 lg:group-hover:opacity-100 translate-y-0 lg:-translate-y-2 lg:group-hover:translate-y-0"}`}
+                      style={{ color: service.accentColor }}
+                    >
+                      {service.link}
+                      <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                  </div>
 
               </div>
             </div>
-          ))}
+          );
+        })}
         </div>
 
       </div>
