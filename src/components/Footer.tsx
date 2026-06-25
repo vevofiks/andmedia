@@ -22,22 +22,22 @@ const footerLinkCategories: FooterLinkCategory[] = [
   {
     title: "Services",
     links: [
-      { label: "Media Planning", href: "#core-services" },
-      { label: "OOH & DOOH", href: "#core-services" },
-      { label: "In-Flight Ads", href: "#core-services" },
-      { label: "Transit Advertising", href: "#core-services" },
-      { label: "Location Intelligence", href: "#map-services" },
-      { label: "Real Estate Mapping", href: "#map-services" },
+      { label: "Media Planning", href: "/#core-services" },
+      { label: "OOH & DOOH", href: "/#core-services" },
+      { label: "In-Flight Ads", href: "/#core-services" },
+      { label: "Transit Advertising", href: "/#core-services" },
+      { label: "Location Intelligence", href: "/#map-services" },
+      { label: "Cybersecurity Pentesting", href: "/cybersecurity" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "#global-reach" },
-      { label: "Our Approach", href: "#process" },
-      { label: "Case Studies", href: "#video-showcase" },
-      { label: "Careers", href: "#cta" },
-      { label: "Contact", href: "#cta", isModal: true },
+      { label: "About Us", href: "/#global-reach" },
+      { label: "Our Approach", href: "/#process" },
+      { label: "Case Studies", href: "/#video-showcase" },
+      { label: "Careers", href: "/#cta" },
+      { label: "Contact", href: "/#cta", isModal: true },
     ],
   },
 ];

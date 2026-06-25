@@ -5,11 +5,11 @@ import Image from "next/image";
 import gsap from "gsap";
 
 const navLinks = [
-  { label: "Services", href: "#core-services" },
-  { label: "Mapping", href: "#map-services" },
-  { label: "Our Approach", href: "#process" },
-  { label: "Global Reach", href: "#global-reach" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Services", href: "/#core-services" },
+  { label: "Mapping", href: "/#map-services" },
+  { label: "Our Approach", href: "/#process" },
+  { label: "Global Reach", href: "/#global-reach" },
+  { label: "Testimonials", href: "/#testimonials" },
 ];
 
 export default function Navbar() {
@@ -113,7 +113,7 @@ export default function Navbar() {
         className="max-w-[1400px] mx-auto px-6 lg:px-12 w-full flex items-center justify-between"
       >
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <Image 
             src="/AND-mediawithoutllc.png" 
             alt="AND Media Solutions" 

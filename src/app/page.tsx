@@ -10,7 +10,6 @@ import Testimonials from "@/components/Testimonials";
 import VideoShowcase from "@/components/VideoShowcase";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
-import ConsultModal from "@/components/ConsultModal";
 
 export default function Home() {
   return (
@@ -29,7 +28,6 @@ export default function Home() {
         <CTABanner />
       </main>
       <Footer />
-      <ConsultModal />
     </>
   );
 }

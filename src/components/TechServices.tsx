@@ -76,6 +76,22 @@ const divisions = [
     ],
     description: "Establish long-term organic authority. We optimize your search visibility through technical audits, structured data schemas, and editorial content designed for high ranking.",
     iconPath: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751A11.958 11.958 0 0112 2.714z"
+  },
+  {
+    id: "cybersecurity",
+    name: "Cybersecurity Services",
+    subtitle: "Security Tested Before It’s Exploited",
+    color: "#E5A900",
+    services: [
+      "Web & API Penetration Testing",
+      "Authentication & Auth Bypass",
+      "Business Logic Flaws",
+      "Access Control Audits",
+      "Injection & Data Exposure",
+      "Secure Configuration Review"
+    ],
+    description: "Manual, offensive security testing focused on real-world attack scenarios. Conducted by researchers recognized globally by Apple, Microsoft, OpenAI, Sony, and more.",
+    iconPath: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751A11.958 11.958 0 0112 2.714z"
   }
 ];
 
@@ -494,6 +510,28 @@ export default function TechServices() {
                     <div className="flex justify-between items-center text-[10px] text-white/50 bg-white/5 px-3.5 py-2.5 rounded-xl border border-white/5">
                       <span>Insight: Organic traffic visibility showing positive index growth</span>
                       <span className="font-mono font-bold text-brand-yellow">UPWARD TREND</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* 6. CYBERSECURITY SERVICES DOCK */}
+                {divisions[activeTab].id === "cybersecurity" && (
+                  <div className="flex flex-col justify-between h-full gap-4 w-full">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-white/40 border-b border-white/5 pb-2">
+                      <span>AUDIT CONSOLE: PENETRATION TESTING MODULE</span>
+                      <span>STATUS: SECURITY AUDIT RUNNING</span>
+                    </div>
+                    <div className="font-mono text-[10.5px] text-[#E5A900] py-2 flex flex-col gap-1 select-none font-semibold">
+                      <span>&gt; npx security-audit --target api.andmedia.me</span>
+                      <span className="text-white/60">✓ Checked JWT signature verification: SECURE</span>
+                      <span className="text-[#12B5B0]">&gt; Scanned endpoint access controls: NO PRIVILEGE ESCALATION FOUND</span>
+                      <span className="text-red-400">&gt; Penetration testing: Manual review of business logic completed</span>
+                    </div>
+                    <div className="flex justify-between items-center text-[10px] text-white/50 bg-white/5 px-3.5 py-2.5 rounded-xl border border-white/5">
+                      <span>Offensive Security Researchers: Microsoft & OpenAI disclosure recognition</span>
+                      <a href="/cybersecurity" className="inline-flex items-center gap-1 text-[#E5A900] hover:text-[#C59000] font-bold">
+                        View Service Suite →
+                      </a>
                     </div>
                   </div>
                 )}
